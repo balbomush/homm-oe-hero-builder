@@ -2,6 +2,10 @@
 tmp_*.html
 wiki_skills_extract.txt
 
+# Local scrape/cache artifacts (underscore-prefixed debug output)
+_*
+scrape_*.py
+
 # Python cache
 __pycache__/
 *.pyc
