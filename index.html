@@ -251,7 +251,16 @@
     }
     footer a { color: var(--gold); }
     .lang-select { min-width: 110px; }
-    .synergy-list, .level-rows { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
+    .synergy-list, .level-calc-rows { display: flex; flex-direction: column; gap: 6px; max-height: 280px; overflow-y: auto; }
+    .synergy-head { font-size: .82rem; color: var(--muted); margin-bottom: 8px; }
+    .synergy-group-title {
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin: 8px 0 4px;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
     .synergy-item {
       font-size: .78rem;
       padding: 6px 8px;
@@ -260,18 +269,34 @@
       background: rgba(0,0,0,.15);
     }
     .synergy-item.active { border-color: var(--ok); color: #b8f0d0; }
-    .synergy-item.potential { border-color: var(--warn); color: #ffd89a; opacity: .85; }
-    .level-row {
+    .synergy-item.partial { border-color: #7eb8e8; color: #c8e4ff; }
+    .synergy-item.potential { border-color: var(--warn); color: #ffd89a; }
+    .synergy-item.inactive { border-color: var(--border); color: var(--muted); opacity: .7; }
+    .synergy-item .syn-status { font-size: .68rem; color: var(--muted); margin-top: 3px; }
+    .level-calc-summary {
       display: grid;
-      grid-template-columns: 36px 1fr 1fr 1fr;
-      gap: 4px;
-      align-items: center;
-      font-size: .75rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: .82rem;
     }
-    .level-row select { padding: 4px 6px; font-size: .72rem; }
-    .level-row .lvl { color: var(--gold); font-weight: 600; text-align: center; }
-    .panel-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-    .panel-tools button { padding: 6px 10px; font-size: .78rem; }
+    .level-calc-stat {
+      background: rgba(0,0,0,.2);
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .level-calc-stat b { display: block; color: var(--gold); font-size: 1.05rem; margin-top: 2px; }
+    .level-calc-stat span { color: var(--muted); font-size: .72rem; }
+    .level-calc-row {
+      font-size: .75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(0,0,0,.12);
+      border-left: 2px solid var(--border);
+    }
+    .level-calc-row.new-skill { border-left-color: var(--magic); }
+    .level-calc-row.tier-up { border-left-color: var(--gold); }
     .hint { font-size: .75rem; color: var(--muted); margin: 0 0 8px; line-height: 1.35; }
   </style>
 </head>
@@ -344,17 +369,12 @@
       </section>
 
       <section class="panel">
-        <h2 id="lblLevelPlan"></h2>
-        <p class="hint" id="levelPlanHint"></p>
-        <div class="panel-tools">
-          <label id="lblTargetLevel" style="margin:0"></label>
-          <select id="selTargetLevel"></select>
-          <button id="btnGenOffers"></button>
-          <button id="btnApplyPlan"></button>
-          <button id="btnClearPlan"></button>
-        </div>
-        <div id="levelPlanStatus"></div>
-        <div class="level-rows" id="levelRows"></div>
+        <h2 id="lblLevelCalc"></h2>
+        <p class="hint" id="levelCalcHint"></p>
+        <div id="levelCalcSummary"></div>
+        <div id="levelCalcStatus"></div>
+        <div class="synergy-group-title" id="lblLevelBreakdown" style="margin-top:10px"></div>
+        <div class="level-calc-rows" id="levelCalcBreakdown"></div>
       </section>
     </div>
   </main>

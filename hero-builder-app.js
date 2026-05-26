@@ -11,8 +11,7 @@ let state = {
   targetSubclass: null,
   slots: Array(SLOT_COUNT).fill(null)
 };
-let levelPlan = {};
-let levelOffers = {};
+const MAX_PRACTICAL_LEVEL = 25;
 
 function t(key, vars) {
   let s = (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
@@ -88,17 +87,14 @@ function applyStaticI18n() {
   document.getElementById("legFaction").textContent = t("factionSkill");
   document.getElementById("lblSubclass").textContent = t("subclass");
   document.getElementById("lblSynergies").textContent = t("synergies");
-  document.getElementById("lblLevelPlan").textContent = t("levelPlan");
-  document.getElementById("levelPlanHint").textContent = t("levelPlanHint");
-  document.getElementById("lblTargetLevel").textContent = t("targetLevel");
+  document.getElementById("lblLevelCalc").textContent = t("levelCalc");
+  document.getElementById("levelCalcHint").textContent = t("levelCalcHint");
+  document.getElementById("lblLevelBreakdown").textContent = t("levelBreakdown");
   document.getElementById("btnReset").textContent = t("reset");
   document.getElementById("btnExport").textContent = t("exportJson");
   document.getElementById("btnImport").textContent = t("importJson");
   document.getElementById("btnRemoveSkill").textContent = t("remove");
-  document.getElementById("lblTier").textContent = t("tierBasic").replace("Basic", lang === "ru" ? "Уровень" : "Tier");
-  document.getElementById("btnGenOffers").textContent = lang === "ru" ? "Случайные 3" : "Random ×3";
-  document.getElementById("btnApplyPlan").textContent = lang === "ru" ? "Применить" : "Apply plan";
-  document.getElementById("btnClearPlan").textContent = t("clearPlan");
+  document.getElementById("lblTier").textContent = t("tierHdr");
   document.getElementById("footerText").innerHTML =
     t("footerData") + ' <a href="https://wiki.hoodedhorse.com/Heroes_of_Might_and_Magic_Olden_Era/Skills" target="_blank">' + t("footerWiki") + "</a> · " +
     '<a href="HoMM_Olden_Era_Skills.md">' + t("footerGuide") + "</a>";
@@ -140,8 +136,6 @@ function initHeroFromSelection() {
     if (subs[hero.subclassHint]) state.targetSubclass = hero.subclassHint;
   }
   state.selectedSlot = null;
-  levelPlan = {};
-  levelOffers = {};
   renderAll();
 }
 
@@ -411,12 +405,37 @@ function renderRequirements() {
 
 function hasSubskill(slot, subName) {
   if (!slot || !subName) return true;
-  const sk = DATA.skills[slot.skill];
-  if (!sk) return false;
-  if (slot.advSub === subName || slot.expSub === subName) return true;
-  if (slot.tier >= 2 && sk.adv?.includes(subName)) return true;
-  if (slot.tier >= 3 && sk.exp?.includes(subName)) return true;
-  return false;
+  return slot.advSub === subName || slot.expSub === subName;
+}
+
+function synergyStatus(syn, skillMap) {
+  const need = normSkill(syn.needs);
+  const skillA = normSkill(syn.skill);
+  const slotA = skillMap.get(skillA);
+  const slotB = skillMap.get(need);
+  const hasA = !!slotA;
+  const hasB = !!slotB;
+  const subOk = !syn.sub || hasSubskill(slotA, syn.sub);
+  if (hasA && hasB && subOk) return "active";
+  if (hasA && hasB && !subOk) return "partial";
+  if (hasA && !hasB) return "potential";
+  return "inactive";
+}
+
+function synergyStatusNote(syn, status, skillMap) {
+  const need = normSkill(syn.needs);
+  const slotA = skillMap.get(normSkill(syn.skill));
+  if (status === "active") return "";
+  if (status === "partial") return t("synergyNeedsSub", { sub: syn.sub, skill: syn.skill });
+  if (status === "potential") return t("synergyNeedsSkill", { skill: need });
+  if (!slotA) return t("synergyNeedsSkill", { skill: syn.skill });
+  return "";
+}
+
+function renderSynergyItem(item) {
+  const sub = item.sub ? ` [${item.sub}]` : "";
+  const note = item.statusNote ? `<div class="syn-status">${item.statusNote}</div>` : "";
+  return `<div class="synergy-item ${item.status}"><b>${item.skill}${sub}</b> + ${item.need}: ${item.desc}${note}</div>`;
 }
 
 function renderSynergies() {
@@ -424,201 +443,150 @@ function renderSynergies() {
   const skillMap = new Map();
   state.slots.filter(Boolean).forEach(s => skillMap.set(s.skill, s));
 
-  const items = SYN.map(syn => {
-    const need = normSkill(syn.needs);
-    const slotA = skillMap.get(normSkill(syn.skill));
-    const slotB = skillMap.get(need);
-    const hasA = !!slotA;
-    const hasB = !!slotB;
-    const subOk = !syn.sub || hasSubskill(slotA, syn.sub);
-    const active = hasA && hasB && subOk;
-    const potential = hasA && !hasB;
-    const desc = lang === "ru" ? syn.descRu : syn.descEn;
-    return { ...syn, active, potential, desc, need };
-  }).filter(x => x.active || x.potential);
-
-  if (!items.length) {
+  if (!SYN.length) {
     list.innerHTML = `<div class="hint">${t("noSynergies")}</div>`;
     return;
   }
-  list.innerHTML = items.map(item => {
-    const cls = item.active ? "active" : "potential";
-    const extra = item.active ? "" : " · " + t("synergyNeeds", { skill: item.need, tier: "Basic" });
-    const sub = item.sub ? ` [${item.sub}]` : "";
-    return `<div class="synergy-item ${cls}"><b>${item.skill}${sub}</b> + ${item.need}: ${item.desc}${extra}</div>`;
-  }).join("");
+
+  const items = SYN.map(syn => {
+    const need = normSkill(syn.needs);
+    const status = synergyStatus(syn, skillMap);
+    const desc = lang === "ru" ? syn.descRu : syn.descEn;
+    return {
+      ...syn,
+      need,
+      status,
+      statusNote: synergyStatusNote(syn, status, skillMap),
+      desc
+    };
+  });
+
+  const active = items.filter(x => x.status === "active");
+  const partial = items.filter(x => x.status === "partial");
+  const potential = items.filter(x => x.status === "potential");
+  const inactive = items.filter(x => x.status === "inactive");
+
+  let html = `<div class="synergy-head">${t("synergyCount", { active: active.length, total: items.length })}</div>`;
+
+  const sections = [
+    ["synergySectionActive", active],
+    ["synergySectionPartial", partial],
+    ["synergySectionPotential", potential],
+    ["synergySectionInactive", inactive]
+  ];
+
+  sections.forEach(([titleKey, group]) => {
+    if (!group.length) return;
+    html += `<div class="synergy-group-title">${t(titleKey)} (${group.length})</div>`;
+    html += group.map(renderSynergyItem).join("");
+  });
+
+  list.innerHTML = html;
 }
 
-function allowedSkillsForLevel() {
-  return Object.keys(DATA.skills)
-    .filter(n => !DATA.skills[n].faction)
-    .filter(n => isSkillAllowed(n))
-    .sort();
-}
-
-function weightedPick(count, exclude) {
-  const chances = getClassInfo()?.skillChances || {};
-  const pool = allowedSkillsForLevel().filter(s => !exclude.has(s));
-  if (!pool.length) return [];
-  const weights = pool.map(s => ({ s, w: chances[s] || 1 }));
-  const picks = [];
-  for (let i = 0; i < count && weights.length; i++) {
-    const total = weights.reduce((a, b) => a + b.w, 0);
-    let r = Math.random() * total;
-    let idx = 0;
-    for (let j = 0; j < weights.length; j++) {
-      r -= weights[j].w;
-      if (r <= 0) { idx = j; break; }
-    }
-    picks.push(weights[idx].s);
-    weights.splice(idx, 1);
-  }
-  return picks;
-}
-
-function simulatePlanSlots() {
+function getStartingSkillTiers() {
   const hero = getHero();
-  if (!hero) return { ok: false, count: 0, skills: {} };
+  if (!hero) return {};
   const fSkill = factionSkillName();
-  const skillTiers = {};
-  skillTiers[fSkill] = hero.start?.some(s => normSkill(s.skill) === fSkill && s.tier === "Advanced") ? 2 : 1;
+  const tiers = {};
+  tiers[fSkill] = hero.start?.some(s => normSkill(s.skill) === fSkill && s.tier === "Advanced") ? 2 : 1;
   (hero.start || []).forEach(s => {
     const sk = normSkill(s.skill);
-    if (sk === fSkill) return;
-    skillTiers[sk] = s.tier === "Advanced" ? 2 : 1;
-  });
-  const target = +document.getElementById("selTargetLevel").value || 25;
-  for (let lv = 2; lv <= target; lv++) {
-    const pick = levelPlan[lv];
-    if (!pick) continue;
-    const sk = normSkill(pick);
-    if (!skillTiers[sk]) skillTiers[sk] = 1;
-    else if (skillTiers[sk] < 3) skillTiers[sk]++;
-  }
-  return { ok: Object.keys(skillTiers).length <= 8, count: Object.keys(skillTiers).length, skills: skillTiers };
-}
-
-function renderLevelPlan() {
-  const rows = document.getElementById("levelRows");
-  const status = document.getElementById("levelPlanStatus");
-  const selTarget = document.getElementById("selTargetLevel");
-  if (!selTarget.options.length) {
-    selTarget.innerHTML = Array.from({ length: 24 }, (_, i) => {
-      const lv = i + 2;
-      return `<option value="${lv}" ${lv === 25 ? "selected" : ""}>${lv}</option>`;
-    }).join("");
-  }
-  const target = +selTarget.value || 25;
-  const allowed = allowedSkillsForLevel();
-  let html = "";
-  for (let lv = 2; lv <= target; lv++) {
-    const offers = levelOffers[lv] || ["", "", ""];
-    const pick = levelPlan[lv] || "";
-    html += `<div class="level-row" data-lv="${lv}">
-      <span class="lvl">${lv}</span>
-      ${[0, 1, 2].map(i => `<select class="offer" data-lv="${lv}" data-i="${i}">
-        <option value="">${t("choose")}</option>
-        ${allowed.map(s => `<option value="${s}" ${offers[i] === s ? "selected" : ""}>${s}</option>`).join("")}
-      </select>`).join("")}
-    </div>`;
-    html += `<div class="level-row" style="margin-bottom:6px">
-      <span></span>
-      <select class="pick" data-lv="${lv}" style="grid-column: span 3">
-        <option value="">${t("pickSkill")}</option>
-        ${allowed.map(s => `<option value="${s}" ${pick === s ? "selected" : ""}>${pick === s ? "→ " : ""}${s}</option>`).join("")}
-      </select>
-    </div>`;
-  }
-  rows.innerHTML = html;
-
-  rows.querySelectorAll(".offer").forEach(el => {
-    el.onchange = () => {
-      const lv = +el.dataset.lv;
-      if (!levelOffers[lv]) levelOffers[lv] = ["", "", ""];
-      levelOffers[lv][+el.dataset.i] = el.value;
-    };
-  });
-  rows.querySelectorAll(".pick").forEach(el => {
-    el.onchange = () => {
-      const lv = +el.dataset.lv;
-      if (el.value) levelPlan[lv] = el.value;
-      else delete levelPlan[lv];
-      renderLevelPlanStatus();
-    };
-  });
-
-  renderLevelPlanStatus();
-}
-
-function renderLevelPlanStatus() {
-  const status = document.getElementById("levelPlanStatus");
-  const sim = simulatePlanSlots();
-  if (sim.ok) {
-    status.innerHTML = `<div class="alert ok">${t("planOk", { n: sim.count })}</div>`;
-  } else {
-    status.innerHTML = `<div class="alert">${t("planConflict")} (${sim.count}/8)</div>`;
-  }
-}
-
-function generateOffers() {
-  levelOffers = {};
-  const target = +document.getElementById("selTargetLevel").value || 25;
-  const taken = new Set();
-  const hero = getHero();
-  if (hero) {
-    taken.add(factionSkillName());
-    (hero.start || []).forEach(s => taken.add(normSkill(s.skill)));
-  }
-  for (let lv = 2; lv <= target; lv++) {
-    levelOffers[lv] = weightedPick(3, taken);
-    if (levelPlan[lv]) taken.add(normSkill(levelPlan[lv]));
-  }
-  renderLevelPlan();
-}
-
-function rebuildSlotsFromPlan() {
-  const hero = getHero();
-  if (!hero) return;
-  state.faction = hero.faction;
-  state.slots = Array(SLOT_COUNT).fill(null);
-  const fSkill = factionSkillName();
-  state.slots[0] = {
-    skill: fSkill,
-    tier: hero.start?.some(s => normSkill(s.skill) === fSkill && s.tier === "Advanced") ? 2 : 1,
-    advSub: null, expSub: null, locked: true
-  };
-  let idx = 1;
-  (hero.start || []).forEach(s => {
-    const skill = normSkill(s.skill);
-    if (skill === fSkill) {
-      if (s.tier === "Advanced") state.slots[0].tier = 2;
+    if (sk === fSkill) {
+      if (s.tier === "Advanced") tiers[fSkill] = 2;
       return;
     }
-    if (idx < SLOT_COUNT) {
-      state.slots[idx++] = { skill, tier: s.tier === "Advanced" ? 2 : 1, advSub: null, expSub: null, locked: true };
+    tiers[sk] = s.tier === "Advanced" ? 2 : 1;
+  });
+  return tiers;
+}
+
+function getCurrentSkillTiers() {
+  const tiers = {};
+  state.slots.filter(Boolean).forEach(s => {
+    tiers[s.skill] = Math.max(tiers[s.skill] || 0, s.tier);
+  });
+  return tiers;
+}
+
+function computeBuildLevelCost() {
+  const start = getStartingSkillTiers();
+  const current = getCurrentSkillTiers();
+  const steps = [];
+
+  Object.entries(current).forEach(([skill, targetTier]) => {
+    const startTier = start[skill] || 0;
+    for (let tier = startTier + 1; tier <= targetTier; tier++) {
+      steps.push({
+        skill,
+        tier,
+        kind: startTier === 0 && tier === 1 ? "new" : "tier"
+      });
     }
   });
-  const sim = simulatePlanSlots();
-  Object.entries(sim.skills).forEach(([skill, tier]) => {
-    const existing = state.slots.find(s => s && s.skill === skill);
-    if (existing) { existing.tier = Math.max(existing.tier, tier); return; }
-    let slotIdx = state.slots.findIndex(s => !s);
-    if (slotIdx < 0) return;
-    state.slots[slotIdx] = { skill, tier, advSub: null, expSub: null, locked: false };
+
+  steps.sort((a, b) => {
+    if (a.kind !== b.kind) return a.kind === "new" ? -1 : 1;
+    return a.skill.localeCompare(b.skill);
   });
+
+  const breakdown = steps.map((step, i) => ({
+    ...step,
+    heroLevel: i + 2
+  }));
+
+  const levelUps = steps.length;
+  const newSkills = steps.filter(s => s.kind === "new").length;
+  const tierUpgrades = steps.filter(s => s.kind === "tier").length;
+  const skillCount = Object.keys(current).length;
+  const minHeroLevel = 1 + levelUps;
+  const slotsOk = skillCount <= SLOT_COUNT;
+  const levelOk = minHeroLevel <= MAX_PRACTICAL_LEVEL;
+
+  return {
+    levelUps,
+    minHeroLevel,
+    newSkills,
+    tierUpgrades,
+    skillCount,
+    breakdown,
+    feasible: slotsOk && levelOk,
+    slotsOk,
+    levelOk
+  };
 }
 
-function applyLevelPlan() {
-  const sim = simulatePlanSlots();
-  if (!sim.ok) { alert(t("planConflict")); return; }
-  rebuildSlotsFromPlan();
-  renderAll();
-}
+function renderLevelCalculator() {
+  const summary = document.getElementById("levelCalcSummary");
+  const status = document.getElementById("levelCalcStatus");
+  const breakdownEl = document.getElementById("levelCalcBreakdown");
+  const calc = computeBuildLevelCost();
 
-function clearLevelPlan() {
-  levelPlan = {};
-  levelOffers = {};
-  renderLevelPlan();
+  summary.innerHTML = `
+    <div class="level-calc-stat"><span>${t("levelUpsNeeded")}</span><b>${calc.levelUps}</b></div>
+    <div class="level-calc-stat"><span>${t("minHeroLevel")}</span><b>${calc.minHeroLevel}</b></div>
+    <div class="level-calc-stat"><span>${t("newSkillsCount")}</span><b>${calc.newSkills}</b></div>
+    <div class="level-calc-stat"><span>${t("tierUpgradesCount")}</span><b>${calc.tierUpgrades}</b></div>
+  `;
+
+  let alerts = "";
+  if (!calc.slotsOk) alerts += `<div class="alert">${t("buildTooManySlots", { n: calc.skillCount })}</div>`;
+  if (!calc.levelOk) alerts += `<div class="alert warn">${t("buildTooHighLevel", { n: calc.minHeroLevel })}</div>`;
+  if (calc.feasible) alerts += `<div class="alert ok">${t("buildFeasible")}</div>`;
+  status.innerHTML = alerts;
+
+  if (!calc.breakdown.length) {
+    breakdownEl.innerHTML = `<div class="hint">${t("none")}</div>`;
+    return;
+  }
+
+  breakdownEl.innerHTML = calc.breakdown.map(step => {
+    const cls = step.kind === "new" ? "new-skill" : "tier-up";
+    const text = step.kind === "new"
+      ? t("levelUpNewSkill", { lv: step.heroLevel, skill: step.skill })
+      : t("levelUpTier", { lv: step.heroLevel, skill: step.skill, tier: tierLabel(step.tier) });
+    return `<div class="level-calc-row ${cls}">${text}</div>`;
+  }).join("");
 }
 
 function renderAll() {
@@ -628,7 +596,7 @@ function renderAll() {
   renderSubclasses();
   renderRequirements();
   renderSynergies();
-  renderLevelPlan();
+  renderLevelCalculator();
 }
 
 document.getElementById("selLang").onchange = (e) => {
@@ -638,11 +606,6 @@ document.getElementById("selLang").onchange = (e) => {
   populateSelects();
   renderAll();
 };
-
-document.getElementById("selTargetLevel").onchange = () => renderLevelPlan();
-document.getElementById("btnGenOffers").onclick = generateOffers;
-document.getElementById("btnApplyPlan").onclick = applyLevelPlan;
-document.getElementById("btnClearPlan").onclick = clearLevelPlan;
 
 document.getElementById("btnReset").onclick = () => initHeroFromSelection();
 
@@ -655,8 +618,7 @@ document.getElementById("btnExport").onclick = () => {
     heroId: state.heroId,
     faction: state.faction,
     targetSubclass: state.targetSubclass,
-    slots: state.slots,
-    levelPlan
+    slots: state.slots
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
@@ -678,7 +640,6 @@ document.getElementById("fileImport").onchange = (e) => {
       if (data.faction) state.faction = data.faction;
       if (data.targetSubclass) state.targetSubclass = data.targetSubclass;
       if (data.slots) state.slots = data.slots;
-      if (data.levelPlan) levelPlan = data.levelPlan;
       populateSelects();
       renderAll();
     } catch (err) { alert(t("importError") + err.message); }
