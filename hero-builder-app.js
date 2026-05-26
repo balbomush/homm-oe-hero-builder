@@ -1,6 +1,7 @@
 const DATA = window.HOE_BUILDER_DATA;
 const SYN = window.HOE_BUILDER_SYNERGIES || [];
 const I18N = window.HOE_BUILDER_I18N;
+const DISP = window.HOE_BUILDER_DISPLAY;
 const CORE = window.HOE_BUILDER_CORE;
 const TIERS = ["", "Basic", "Advanced", "Expert"];
 const SLOT_COUNT = CORE.SLOT_COUNT;
@@ -26,11 +27,26 @@ function tierLabel(tier) {
   return t("empty");
 }
 
+function localizeGameText(text) {
+  if (lang !== "ru" || !DISP || !text) return text;
+  const pairs = [];
+  Object.keys(DISP.skills.en || {}).forEach((k) => pairs.push([k, DISP.skill("ru", k)]));
+  Object.keys(DISP.subskills.en || {}).forEach((k) => pairs.push([k, DISP.subskill("ru", k)]));
+  Object.keys(DISP.subclasses.en || {}).forEach((k) => pairs.push([k, DISP.subclass("ru", k)]));
+  pairs.sort((a, b) => b[0].length - a[0].length);
+  let out = text;
+  pairs.forEach(([en, ru]) => {
+    if (en && ru && en !== ru) out = out.split(en).join(ru);
+  });
+  return out;
+}
+
 function heroDesc(hero) {
   if (!hero) return "";
-  return lang === "ru"
+  const raw = lang === "ru"
     ? (hero.specialtyDescRu || hero.specialtyDescEn || "")
     : (hero.specialtyDescEn || hero.specialtyDescRu || "");
+  return localizeGameText(raw);
 }
 
 function subclassBonus(data) {
@@ -43,6 +59,22 @@ function factionLabel(f) {
 
 function classLabel(className) {
   return (I18N[lang].classes && I18N[lang].classes[className]) || className;
+}
+
+function skillLabel(skillName) {
+  if (!skillName) return "";
+  const key = normSkill(skillName);
+  return DISP ? DISP.skill(lang, key) : key;
+}
+
+function subskillLabel(subName) {
+  if (!subName) return "";
+  return DISP ? DISP.subskill(lang, subName) : subName;
+}
+
+function subclassLabel(subName) {
+  if (!subName) return "";
+  return DISP ? DISP.subclass(lang, subName) : subName;
 }
 
 function classTypeLabel(type) {
@@ -169,10 +201,10 @@ function renderHeroCard() {
       <span class="tag ${cls?.type === "Might" ? "might" : "magic"}">${classTypeLabel(cls?.type)}</span>
       <span class="tag">${classLabel(hero.class)}</span>
       ${hero.universal ? `<span class="tag">${t("universal")}</span>` : ""}
-      ${hero.subclassHint ? `<span class="tag">→ ${hero.subclassHint}</span>` : ""}
+      ${hero.subclassHint ? `<span class="tag">→ ${subclassLabel(hero.subclassHint)}</span>` : ""}
     </div>
   `;
-  const startTxt = (hero.start || []).map(s => `${startTierLabel(s.tier)} ${normSkill(s.skill)}`).join(", ") || "—";
+  const startTxt = (hero.start || []).map(s => `${startTierLabel(s.tier)} ${skillLabel(s.skill)}`).join(", ") || "—";
   stats.innerHTML = `
     <div><b>${t("faction")}:</b> ${factionLabel(hero.faction)}</div>
     <div><b>${t("startingSkills")}:</b> ${startTxt}</div>
@@ -197,7 +229,7 @@ function renderWheel() {
   center.className = "wheel-center";
   center.innerHTML = `
     <div class="label">${t("factionCenter")}</div>
-    <div class="name">${factionSkillName()}</div>
+    <div class="name">${skillLabel(factionSkillName())}</div>
     <div class="tier">${state.slots[0] ? tierLabel(state.slots[0].tier) : t("tierBasic")}</div>
   `;
   wheel.appendChild(center);
@@ -219,10 +251,10 @@ function renderWheel() {
       el.classList.add("cat-" + (sk?.cat || "general"));
       if (reqSkills.includes(slot.skill)) el.classList.add("required");
       const subs = [];
-      if (slot.tier >= 2 && slot.advSub) subs.push("A: " + slot.advSub);
-      if (slot.tier >= 3 && slot.expSub) subs.push("E: " + slot.expSub);
+      if (slot.tier >= 2 && slot.advSub) subs.push("A: " + subskillLabel(slot.advSub));
+      if (slot.tier >= 3 && slot.expSub) subs.push("E: " + subskillLabel(slot.expSub));
       el.innerHTML = `
-        <div class="skill-name">${slot.skill}</div>
+        <div class="skill-name">${skillLabel(slot.skill)}</div>
         <div class="tier">${tierLabel(slot.tier)}</div>
         <div class="subs">${subs.join("<br>") || (slot.tier >= 2 ? t("chooseSub") : "")}</div>
       `;
@@ -245,7 +277,7 @@ function renderEditor() {
   if (i === null) { ed.hidden = true; return; }
   ed.hidden = false;
   const slot = state.slots[i];
-  document.getElementById("editorTitle").textContent = slot ? slot.skill : `${t("slot")} ${i + 1}`;
+  document.getElementById("editorTitle").textContent = slot ? skillLabel(slot.skill) : `${t("slot")} ${i + 1}`;
 
   const selTier = document.getElementById("selTier");
   if (!slot) {
@@ -285,7 +317,7 @@ function renderSkillPicker(slotIndex) {
     <label>${t("addSkill")} ${slotIndex + 1}</label>
     <select id="pickSkill">
       <option value="">${t("choose")}</option>
-      ${options.map(o => `<option value="${o}">${o}</option>`).join("")}
+      ${options.map(o => `<option value="${o}">${skillLabel(o)}</option>`).join("")}
     </select>
   `;
   document.getElementById("pickSkill").onchange = (e) => {
@@ -305,12 +337,12 @@ function renderSubPicks(slot) {
   if (slot.tier >= 2 && sk.adv?.length) {
     html += `<label>${t("advSub")}</label>
       <select id="pickAdv">${sk.adv.map(s =>
-        `<option value="${s}" ${slot.advSub === s ? "selected" : ""}>${s}</option>`).join("")}</select>`;
+        `<option value="${s}" ${slot.advSub === s ? "selected" : ""}>${subskillLabel(s)}</option>`).join("")}</select>`;
   }
   if (slot.tier >= 3 && sk.exp?.length) {
     html += `<label>${t("expSub")}</label>
       <select id="pickExp">${sk.exp.map(s =>
-        `<option value="${s}" ${slot.expSub === s ? "selected" : ""}>${s}</option>`).join("")}</select>`;
+        `<option value="${s}" ${slot.expSub === s ? "selected" : ""}>${subskillLabel(s)}</option>`).join("")}</select>`;
   }
   subPicks.innerHTML = html;
   const pa = document.getElementById("pickAdv");
@@ -330,7 +362,7 @@ function renderSubclasses() {
   const subs = DATA.classes[hero.class]?.subclasses || {};
   list.innerHTML = Object.entries(subs).map(([name, data]) => `
     <div class="subclass-item ${state.targetSubclass === name ? "selected" : ""}" data-sub="${name}">
-      <div class="title">${name}</div>
+      <div class="title">${subclassLabel(name)}</div>
       <div class="bonus">${subclassBonus(data)}</div>
     </div>
   `).join("");
@@ -366,7 +398,7 @@ function renderRequirements() {
     if (tier >= 3) done++;
     const chance = getClassInfo()?.skillChances?.[skill];
     const ch = chance !== undefined ? ` · ${chance}%${t("roll")}` : "";
-    return `<div class="req ${cls}"><span>${skill}</span><span>${tier >= 3 ? t("expertDone") : tier > 0 ? tierLabel(tier) : t("none")}${ch}</span></div>`;
+    return `<div class="req ${cls}"><span>${skillLabel(skill)}</span><span>${tier >= 3 ? t("expertDone") : tier > 0 ? tierLabel(tier) : t("none")}${ch}</span></div>`;
   }).join("");
   bar.style.width = (done / req.length * 100) + "%";
   txt.textContent = t("subclassProgress", { done, total: req.length });
@@ -389,16 +421,16 @@ function synergyStatusNote(syn, status, skillMap) {
   const need = normSkill(syn.needs);
   const slotA = skillMap.get(normSkill(syn.skill));
   if (status === "active") return "";
-  if (status === "partial") return t("synergyNeedsSub", { sub: syn.sub, skill: syn.skill });
-  if (status === "potential") return t("synergyNeedsSkill", { skill: need });
-  if (!slotA) return t("synergyNeedsSkill", { skill: syn.skill });
+  if (status === "partial") return t("synergyNeedsSub", { sub: subskillLabel(syn.sub), skill: skillLabel(syn.skill) });
+  if (status === "potential") return t("synergyNeedsSkill", { skill: skillLabel(need) });
+  if (!slotA) return t("synergyNeedsSkill", { skill: skillLabel(syn.skill) });
   return "";
 }
 
 function renderSynergyItem(item) {
-  const sub = item.sub ? ` [${item.sub}]` : "";
+  const sub = item.sub ? ` [${subskillLabel(item.sub)}]` : "";
   const note = item.statusNote ? `<div class="syn-status">${item.statusNote}</div>` : "";
-  return `<div class="synergy-item ${item.status}"><b>${item.skill}${sub}</b> + ${item.need}: ${item.desc}${note}</div>`;
+  return `<div class="synergy-item ${item.status}"><b>${skillLabel(item.skill)}${sub}</b> + ${skillLabel(item.need)}: ${item.desc}${note}</div>`;
 }
 
 function renderSynergies() {
@@ -481,8 +513,8 @@ function renderLevelCalculator() {
   breakdownEl.innerHTML = calc.breakdown.map(step => {
     const cls = step.kind === "new" ? "new-skill" : "tier-up";
     const text = step.kind === "new"
-      ? t("levelUpNewSkill", { lv: step.heroLevel, skill: step.skill })
-      : t("levelUpTier", { lv: step.heroLevel, skill: step.skill, tier: tierLabel(step.tier) });
+      ? t("levelUpNewSkill", { lv: step.heroLevel, skill: skillLabel(step.skill) })
+      : t("levelUpTier", { lv: step.heroLevel, skill: skillLabel(step.skill), tier: tierLabel(step.tier) });
     return `<div class="level-calc-row ${cls}">${text}</div>`;
   }).join("");
 }
