@@ -58,8 +58,8 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 10, Logistics: 10, Scouting: 10, Economy: 10, Tactics: 10, Siegecraft: 10, Recruitment: 10
       },
       subclasses: {
-        Swashbuckler: { bonus: "Heroic Strike +200 base Damage", bonusEn: "Heroic Strike +200 base Damage", bonusRu: "Heroic Strike +200 базового урона", skills: ["Nightshade Magic", "Wisdom", "Leadership", "Luck", "Offense"] },
-        Paragon: { bonus: "Союзники: max/min урон", bonusEn: "Allies deal max/min damage", bonusRu: "Союзники: max/min урон", skills: ["Daylight Magic", "Battlecraft", "Tactics", "Diplomacy", "Summon Avatar"] }
+        Swashbuckler: { bonus: "Heroic Strike +200 base Damage", bonusEn: "Heroic Strike +200 base Damage", bonusRu: "Героический удар +200 базового урона", skills: ["Nightshade Magic", "Wisdom", "Leadership", "Luck", "Offense"] },
+        Paragon: { bonus: "Союзники: max/min урон", bonusEn: "Allies deal max/min damage", bonusRu: "Союзники наносят макс./мин. урон", skills: ["Daylight Magic", "Battlecraft", "Tactics", "Diplomacy", "Summon Avatar"] }
       }
     },
     Cleric: {
@@ -82,8 +82,8 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 7.5, Logistics: 10, Scouting: 10, Economy: 10, Tactics: 7.5, Siegecraft: 10, Recruitment: 10
       },
       subclasses: {
-        "Harbinger of Doom": { bonus: "Min Luck врага, doom strikes", bonusEn: "Min enemy Luck, doom strikes", bonusRu: "Min Luck врага, doom strikes", skills: ["Defence", "Luck", "Primal Magic", "Scouting", "Sorcery"] },
-        "Walking Rot": { bonus: "Min Morale врага", bonusEn: "Min enemy Morale", bonusRu: "Min Morale врага", skills: ["Resistance", "Tactics", "Diplomacy", "Nightshade Magic", "Wisdom"] }
+        "Harbinger of Doom": { bonus: "Min Luck врага, doom strikes", bonusEn: "Min enemy Luck, doom strikes", bonusRu: "Мин. удача врага, удары рока", skills: ["Defence", "Luck", "Primal Magic", "Scouting", "Sorcery"] },
+        "Walking Rot": { bonus: "Min Morale врага", bonusEn: "Min enemy Morale", bonusRu: "Мин. мораль врага", skills: ["Resistance", "Tactics", "Diplomacy", "Nightshade Magic", "Wisdom"] }
       }
     },
     Necromancer: {
@@ -94,22 +94,22 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 7.5, Logistics: 10, Scouting: 10, Economy: 10, Tactics: 7.5, Siegecraft: 10, Thaumaturgy: 10
       },
       subclasses: {
-        Soulweaver: { bonus: "Wights на месте трупов", bonusEn: "Wights spawn from corpses", bonusRu: "Wights на месте трупов", skills: ["Summon Avatar", "Arcane Magic", "Battlecraft", "Insight", "Logistics"] },
-        Chronomancer: { bonus: "Necromancy для всех типов", bonusEn: "Necromancy for all unit types", bonusRu: "Necromancy для всех типов", skills: ["Daylight Magic", "Tactics", "Battle Magic", "Offense", "Economy"] }
+        Soulweaver: { bonus: "Wights на месте трупов", bonusEn: "Wights spawn from corpses", bonusRu: "Врайты появляются на месте трупов", skills: ["Summon Avatar", "Arcane Magic", "Battlecraft", "Insight", "Logistics"] },
+        Chronomancer: { bonus: "Necromancy для всех типов", bonusEn: "Necromancy for all unit types", bonusRu: "Некромантия для всех типов существ", skills: ["Daylight Magic", "Tactics", "Battle Magic", "Offense", "Economy"] }
       }
     },
     Warden: {
       faction: "Grove", type: "Might", skillChances: {},
       subclasses: {
-        "Fortune's Favored": { bonus: "Max Luck + всегда Lucky Strike", bonusEn: "Max Luck + always Lucky Strike", bonusRu: "Max Luck + всегда Lucky Strike", skills: ["Diplomacy", "Wisdom", "Luck", "Offense", "Primal Magic"] },
-        "Wellspring of Vigor": { bonus: "Max Focus Charges каждый раунд", bonusEn: "Max Focus Charges every round", bonusRu: "Max Focus Charges каждый раунд", skills: ["Arcane Magic", "Battle Magic", "Defence", "Insight", "Scouting"] }
+        "Fortune's Favored": { bonus: "Max Luck + всегда Lucky Strike", bonusEn: "Max Luck + always Lucky Strike", bonusRu: "Макс. удача + всегда удачный удар", skills: ["Diplomacy", "Wisdom", "Luck", "Offense", "Primal Magic"] },
+        "Wellspring of Vigor": { bonus: "Max Focus Charges каждый раунд", bonusEn: "Max Focus Charges every round", bonusRu: "Макс. заряды фокуса каждый раунд", skills: ["Arcane Magic", "Battle Magic", "Defence", "Insight", "Scouting"] }
       }
     },
     Druid: {
       faction: "Grove", type: "Magic", skillChances: {},
       subclasses: {
         "Celestial Envoy": { bonus: "Все школы заклинаний", bonusEn: "All magic schools", bonusRu: "Все школы заклинаний", skills: ["Defence", "Summon Avatar", "Arcane Magic", "Scouting", "Economy"] },
-        "Heaven's Fury": { bonus: "Heroic Strike AoE 1 hex", bonusEn: "Heroic Strike AoE 1 hex", bonusRu: "Heroic Strike AoE 1 hex", skills: ["Battlecraft", "Sorcery", "Nightshade Magic", "Logistics", "Tactics"] }
+        "Heaven's Fury": { bonus: "Heroic Strike AoE 1 hex", bonusEn: "Heroic Strike AoE 1 hex", bonusRu: "Героический удар: AoE 1 гекс", skills: ["Battlecraft", "Sorcery", "Nightshade Magic", "Logistics", "Tactics"] }
       }
     },
     Overlord: {
@@ -120,8 +120,8 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 12.5, Logistics: 5, Scouting: 12.5, Economy: 12.5, Tactics: 10, Siegecraft: 10, Recruitment: 10
       },
       subclasses: {
-        "Balthazar's Bodyguard": { bonus: "+100% Attack", bonusEn: "+100% Attack", bonusRu: "+100% Attack", skills: ["Offense", "Nightshade Magic", "Leadership", "Diplomacy", "Wisdom"] },
-        "Silvertongue's Envoy": { bonus: "+100% Defence", bonusEn: "+100% Defence", bonusRu: "+100% Defence", skills: ["Defence", "Daylight Magic", "Luck", "Sorcery", "Scouting"] }
+        "Balthazar's Bodyguard": { bonus: "+100% Attack", bonusEn: "+100% Attack", bonusRu: "+100% атаки", skills: ["Offense", "Nightshade Magic", "Leadership", "Diplomacy", "Wisdom"] },
+        "Silvertongue's Envoy": { bonus: "+100% Defence", bonusEn: "+100% Defence", bonusRu: "+100% защиты", skills: ["Defence", "Daylight Magic", "Luck", "Sorcery", "Scouting"] }
       }
     },
     Warlock: {
@@ -132,7 +132,7 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 12.5, Logistics: 5, Scouting: 12.5, Economy: 12.5, Tactics: 10, Siegecraft: 10, Thaumaturgy: 10
       },
       subclasses: {
-        "Amelchia's Heir": { bonus: "+100% Spell Power", bonusEn: "+100% Spell Power", bonusRu: "+100% Spell Power", skills: ["Primal Magic", "Summon Avatar", "Insight", "Battlecraft", "Tactics"] },
+        "Amelchia's Heir": { bonus: "+100% Spell Power", bonusEn: "+100% Spell Power", bonusRu: "+100% силы заклинаний", skills: ["Primal Magic", "Summon Avatar", "Insight", "Battlecraft", "Tactics"] },
         "Great Merchant": { bonus: "+10 000 золота/день", bonusEn: "+10,000 gold/day", bonusRu: "+10 000 золота/день", skills: ["Arcane Magic", "Resistance", "Battle Magic", "Economy", "Logistics"] }
       }
     },
@@ -147,7 +147,7 @@ window.HOE_BUILDER_DATA = {
       faction: "Hive", type: "Magic", skillChances: {},
       subclasses: {
         Progenitor: { bonus: "+200% рост существ", bonusEn: "+200% creature growth", bonusRu: "+200% рост существ", skills: ["Insight", "Defence", "Diplomacy", "Summon Avatar", "Tactics"] },
-        "Lord of Chaos": { bonus: "Heroic Strike +5 за stat point", bonusEn: "Heroic Strike +5 per stat point", bonusRu: "Heroic Strike +5 за stat point", skills: ["Primal Magic", "Luck", "Offense", "Scouting", "Sorcery"] }
+        "Lord of Chaos": { bonus: "Heroic Strike +5 за stat point", bonusEn: "Heroic Strike +5 per stat point", bonusRu: "Героический удар +5 за пункт характеристики", skills: ["Primal Magic", "Luck", "Offense", "Scouting", "Sorcery"] }
       }
     },
     Oathkeeper: {
@@ -158,15 +158,15 @@ window.HOE_BUILDER_DATA = {
         Diplomacy: 5, Logistics: 15, Scouting: 12.5, Economy: 12.5, Tactics: 7.5, Siegecraft: 10, Recruitment: 10
       },
       subclasses: {
-        Unbound: { bonus: "Max уровень всех заклинаний", bonusEn: "Max level for all spells", bonusRu: "Max уровень всех заклинаний", skills: ["Daylight Magic", "Scouting", "Offense", "Sorcery", "Leadership"] },
-        Unfeeling: { bonus: "Враг теряет весь Focus/раунд", bonusEn: "Enemies lose all Focus/round", bonusRu: "Враг теряет весь Focus/раунд", skills: ["Nightshade Magic", "Resistance", "Diplomacy", "Wisdom", "Economy"] }
+        Unbound: { bonus: "Max уровень всех заклинаний", bonusEn: "Max level for all spells", bonusRu: "Макс. уровень всех заклинаний", skills: ["Daylight Magic", "Scouting", "Offense", "Sorcery", "Leadership"] },
+        Unfeeling: { bonus: "Враг теряет весь Focus/раунд", bonusEn: "Enemies lose all Focus/round", bonusRu: "Враг теряет весь фокус за раунд", skills: ["Nightshade Magic", "Resistance", "Diplomacy", "Wisdom", "Economy"] }
       }
     },
     Riftspeaker: {
       faction: "Schism", type: "Magic", skillChances: {},
       subclasses: {
         Unstoppable: { bonus: "+10 ко всем статам", bonusEn: "+10 to all stats", bonusRu: "+10 ко всем статам", skills: ["Battle Magic", "Insight", "Battlecraft", "Tactics", "Primal Magic"] },
-        Unfathomable: { bonus: "Враги: min/max урон", bonusEn: "Enemies deal min/max damage", bonusRu: "Враги: min/max урон", skills: ["Arcane Magic", "Logistics", "Luck", "Summon Avatar", "Defence"] }
+        Unfathomable: { bonus: "Враги: min/max урон", bonusEn: "Enemies deal min/max damage", bonusRu: "Враги наносят макс./мин. урон", skills: ["Arcane Magic", "Logistics", "Luck", "Summon Avatar", "Defence"] }
       }
     }
   },

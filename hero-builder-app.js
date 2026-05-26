@@ -1,8 +1,9 @@
 const DATA = window.HOE_BUILDER_DATA;
 const SYN = window.HOE_BUILDER_SYNERGIES || [];
 const I18N = window.HOE_BUILDER_I18N;
+const CORE = window.HOE_BUILDER_CORE;
 const TIERS = ["", "Basic", "Advanced", "Expert"];
-const SLOT_COUNT = 8;
+const SLOT_COUNT = CORE.SLOT_COUNT;
 let lang = localStorage.getItem("hoe_builder_lang") || "ru";
 let state = {
   faction: "Temple",
@@ -11,7 +12,6 @@ let state = {
   targetSubclass: null,
   slots: Array(SLOT_COUNT).fill(null)
 };
-const MAX_PRACTICAL_LEVEL = 25;
 
 function t(key, vars) {
   let s = (I18N[lang] && I18N[lang][key]) || I18N.en[key] || key;
@@ -41,8 +41,25 @@ function factionLabel(f) {
   return (I18N[lang].factions && I18N[lang].factions[f]) || f;
 }
 
+function classLabel(className) {
+  return (I18N[lang].classes && I18N[lang].classes[className]) || className;
+}
+
+function classTypeLabel(type) {
+  if (type === "Might") return t("classMight");
+  if (type === "Magic") return t("classMagic");
+  return type || "";
+}
+
+function startTierLabel(tierStr) {
+  if (tierStr === "Basic") return t("tierBasic");
+  if (tierStr === "Advanced") return t("tierAdvanced");
+  if (tierStr === "Expert") return t("tierExpert");
+  return tierStr;
+}
+
 function normSkill(name) {
-  return DATA.skillAliases[name] || name;
+  return CORE.normSkill(DATA, name);
 }
 
 function getHero() {
@@ -55,20 +72,11 @@ function getClassInfo() {
 }
 
 function isSkillAllowed(skillName) {
-  const cls = getClassInfo();
-  if (!cls) return true;
-  const sk = DATA.skills[skillName];
-  if (!sk) return false;
-  if (cls.type === "Might" && sk.magic === false) return false;
-  if (cls.type === "Magic" && sk.might === false) return false;
-  if (skillName === "Thaumaturgy" && cls.type === "Might") return false;
-  if (skillName === "Recruitment" && cls.type === "Magic") return false;
-  if (skillName === "Combat" && cls.type === "Magic") return false;
-  return true;
+  return CORE.isSkillAllowed(DATA, getClassInfo(), skillName);
 }
 
 function factionSkillName() {
-  return DATA.factions[state.faction].skill;
+  return CORE.factionSkillName(DATA, state.faction);
 }
 
 function applyStaticI18n() {
@@ -105,32 +113,7 @@ function initHeroFromSelection() {
   const hero = getHero();
   if (!hero) return;
   state.faction = hero.faction;
-  state.slots = Array(SLOT_COUNT).fill(null);
-  const fSkill = factionSkillName();
-  state.slots[0] = {
-    skill: fSkill,
-    tier: hero.start?.some(s => s.skill === fSkill && s.tier === "Advanced") ? 2 : 1,
-    advSub: null,
-    expSub: null,
-    locked: true
-  };
-  let idx = 1;
-  (hero.start || []).forEach(s => {
-    const skill = normSkill(s.skill);
-    if (skill === fSkill) {
-      if (s.tier === "Advanced") state.slots[0].tier = 2;
-      return;
-    }
-    if (idx < SLOT_COUNT) {
-      state.slots[idx++] = {
-        skill,
-        tier: s.tier === "Advanced" ? 2 : 1,
-        advSub: null,
-        expSub: null,
-        locked: true
-      };
-    }
-  });
+  state.slots = CORE.buildInitialSlots(DATA, hero);
   if (hero.subclassHint) {
     const subs = DATA.classes[hero.class]?.subclasses || {};
     if (subs[hero.subclassHint]) state.targetSubclass = hero.subclassHint;
@@ -157,7 +140,7 @@ function updateClassHeroSelects() {
   const heroes = DATA.heroes.filter(h => h.faction === state.faction);
   const classes = [...new Set(heroes.map(h => h.class))];
   const selC = document.getElementById("selClass");
-  selC.innerHTML = classes.map(c => `<option value="${c}">${c}</option>`).join("");
+  selC.innerHTML = classes.map(c => `<option value="${c}">${classLabel(c)}</option>`).join("");
   selC.onchange = updateHeroSelect;
   updateHeroSelect();
 }
@@ -183,13 +166,13 @@ function renderHeroCard() {
     <div class="spec-title">${hero.specialty}</div>
     <div class="spec-desc">${heroDesc(hero)}</div>
     <div class="tags">
-      <span class="tag ${cls?.type === "Might" ? "might" : "magic"}">${cls?.type || ""}</span>
-      <span class="tag">${hero.class}</span>
+      <span class="tag ${cls?.type === "Might" ? "might" : "magic"}">${classTypeLabel(cls?.type)}</span>
+      <span class="tag">${classLabel(hero.class)}</span>
       ${hero.universal ? `<span class="tag">${t("universal")}</span>` : ""}
       ${hero.subclassHint ? `<span class="tag">→ ${hero.subclassHint}</span>` : ""}
     </div>
   `;
-  const startTxt = (hero.start || []).map(s => `${s.tier} ${normSkill(s.skill)}`).join(", ") || "—";
+  const startTxt = (hero.start || []).map(s => `${startTierLabel(s.tier)} ${normSkill(s.skill)}`).join(", ") || "—";
   stats.innerHTML = `
     <div><b>${t("faction")}:</b> ${factionLabel(hero.faction)}</div>
     <div><b>${t("startingSkills")}:</b> ${startTxt}</div>
@@ -199,7 +182,7 @@ function renderHeroCard() {
 }
 
 function usedSlots() {
-  return state.slots.filter(Boolean).length;
+  return CORE.usedSlotCount(state.slots);
 }
 
 function renderWheel() {
@@ -337,11 +320,7 @@ function renderSubPicks(slot) {
 }
 
 function getRequiredSkills() {
-  if (!state.targetSubclass) return [];
-  const hero = getHero();
-  if (!hero) return [];
-  const subs = DATA.classes[hero.class]?.subclasses?.[state.targetSubclass];
-  return subs ? subs.skills.map(normSkill) : [];
+  return CORE.getRequiredSkills(DATA, getHero(), state.targetSubclass);
 }
 
 function renderSubclasses() {
@@ -364,8 +343,7 @@ function renderSubclasses() {
 }
 
 function skillLevel(skillName) {
-  const s = state.slots.find(sl => sl && sl.skill === skillName);
-  return s ? s.tier : 0;
+  return CORE.skillLevel(state.slots, skillName);
 }
 
 function renderRequirements() {
@@ -403,23 +381,8 @@ function renderRequirements() {
   alerts.innerHTML = alertHtml;
 }
 
-function hasSubskill(slot, subName) {
-  if (!slot || !subName) return true;
-  return slot.advSub === subName || slot.expSub === subName;
-}
-
 function synergyStatus(syn, skillMap) {
-  const need = normSkill(syn.needs);
-  const skillA = normSkill(syn.skill);
-  const slotA = skillMap.get(skillA);
-  const slotB = skillMap.get(need);
-  const hasA = !!slotA;
-  const hasB = !!slotB;
-  const subOk = !syn.sub || hasSubskill(slotA, syn.sub);
-  if (hasA && hasB && subOk) return "active";
-  if (hasA && hasB && !subOk) return "partial";
-  if (hasA && !hasB) return "potential";
-  return "inactive";
+  return CORE.synergyStatus(DATA, syn, skillMap);
 }
 
 function synergyStatusNote(syn, status, skillMap) {
@@ -484,76 +447,11 @@ function renderSynergies() {
   list.innerHTML = html;
 }
 
-function getStartingSkillTiers() {
-  const hero = getHero();
-  if (!hero) return {};
-  const fSkill = factionSkillName();
-  const tiers = {};
-  tiers[fSkill] = hero.start?.some(s => normSkill(s.skill) === fSkill && s.tier === "Advanced") ? 2 : 1;
-  (hero.start || []).forEach(s => {
-    const sk = normSkill(s.skill);
-    if (sk === fSkill) {
-      if (s.tier === "Advanced") tiers[fSkill] = 2;
-      return;
-    }
-    tiers[sk] = s.tier === "Advanced" ? 2 : 1;
-  });
-  return tiers;
-}
-
-function getCurrentSkillTiers() {
-  const tiers = {};
-  state.slots.filter(Boolean).forEach(s => {
-    tiers[s.skill] = Math.max(tiers[s.skill] || 0, s.tier);
-  });
-  return tiers;
-}
-
 function computeBuildLevelCost() {
-  const start = getStartingSkillTiers();
-  const current = getCurrentSkillTiers();
-  const steps = [];
-
-  Object.entries(current).forEach(([skill, targetTier]) => {
-    const startTier = start[skill] || 0;
-    for (let tier = startTier + 1; tier <= targetTier; tier++) {
-      steps.push({
-        skill,
-        tier,
-        kind: startTier === 0 && tier === 1 ? "new" : "tier"
-      });
-    }
-  });
-
-  steps.sort((a, b) => {
-    if (a.kind !== b.kind) return a.kind === "new" ? -1 : 1;
-    return a.skill.localeCompare(b.skill);
-  });
-
-  const breakdown = steps.map((step, i) => ({
-    ...step,
-    heroLevel: i + 2
-  }));
-
-  const levelUps = steps.length;
-  const newSkills = steps.filter(s => s.kind === "new").length;
-  const tierUpgrades = steps.filter(s => s.kind === "tier").length;
-  const skillCount = Object.keys(current).length;
-  const minHeroLevel = 1 + levelUps;
-  const slotsOk = skillCount <= SLOT_COUNT;
-  const levelOk = minHeroLevel <= MAX_PRACTICAL_LEVEL;
-
-  return {
-    levelUps,
-    minHeroLevel,
-    newSkills,
-    tierUpgrades,
-    skillCount,
-    breakdown,
-    feasible: slotsOk && levelOk,
-    slotsOk,
-    levelOk
-  };
+  const hero = getHero();
+  const start = CORE.getStartingSkillTiers(DATA, hero);
+  const current = CORE.getCurrentSkillTiers(state.slots);
+  return CORE.computeBuildLevelCost(start, current);
 }
 
 function renderLevelCalculator() {

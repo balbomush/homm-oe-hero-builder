@@ -14,3 +14,6 @@ Thumbs.db
 # Duplicate JSON exports (canonical copy is homm_oe_heroes_export.json)
 heroes_array.json
 heroes_data.json
+
+# Local autotests (run before push, not published)
+tests/

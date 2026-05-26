@@ -5,11 +5,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Battle March",
     "requires": "Luck",
     "effect": "Focus per attack bonus is doubled",
-    "effectRu": "Бонус Focus за атаку удваивается",
+    "effectRu": "Бонус фокуса за атаку удваивается",
     "sub": "Battle March",
     "needs": "Luck",
     "descEn": "Focus per attack bonus is doubled",
-    "descRu": "Бонус Focus за атаку удваивается"
+    "descRu": "Бонус фокуса за атаку удваивается"
   },
   {
     "skill": "Offense",
@@ -27,11 +27,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "One for All",
     "requires": "Tactics",
     "effect": "Attack per adjacent enemy bonus is doubled",
-    "effectRu": "Бонус Attack за соседних врагов удваивается",
+    "effectRu": "Бонус атаки за соседних врагов удваивается",
     "sub": "One for All",
     "needs": "Tactics",
     "descEn": "Attack per adjacent enemy bonus is doubled",
-    "descRu": "Бонус Attack за соседних врагов удваивается"
+    "descRu": "Бонус атаки за соседних врагов удваивается"
   },
   {
     "skill": "Offense",
@@ -49,11 +49,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Hymn to the Martyrs",
     "requires": "Recruitment",
     "effect": "Focus when taking damage bonus is doubled",
-    "effectRu": "Бонус Focus при получении урона удваивается",
+    "effectRu": "Бонус фокуса при получении урона удваивается",
     "sub": "Hymn to the Martyrs",
     "needs": "Recruitment",
     "descEn": "Focus when taking damage bonus is doubled",
-    "descRu": "Бонус Focus при получении урона удваивается"
+    "descRu": "Бонус фокуса при получении урона удваивается"
   },
   {
     "skill": "Defence",
@@ -71,33 +71,33 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "All for One",
     "requires": "Tactics",
     "effect": "Defense per adjacent ally bonus is doubled",
-    "effectRu": "Бонус Defense за соседних союзников удваивается",
+    "effectRu": "Бонус защиты за соседних союзников удваивается",
     "sub": "All for One",
     "needs": "Tactics",
     "descEn": "Defense per adjacent ally bonus is doubled",
-    "descRu": "Бонус Defense за соседних союзников удваивается"
+    "descRu": "Бонус защиты за соседних союзников удваивается"
   },
   {
     "skill": "Defence",
     "subskill": "Avatar of Toughness",
     "requires": "Summon Avatar",
     "effect": "Avatar Defense scaling bonus is doubled",
-    "effectRu": "Бонус Defense аватара удваивается",
+    "effectRu": "Бонус защиты аватара удваивается",
     "sub": "Avatar of Toughness",
     "needs": "Summon Avatar",
     "descEn": "Avatar Defense scaling bonus is doubled",
-    "descRu": "Бонус Defense аватара удваивается"
+    "descRu": "Бонус защиты аватара удваивается"
   },
   {
     "skill": "Battlecraft",
     "subskill": "Resolve",
     "requires": "Leadership",
     "effect": "Extra turn chance per Morale bonus is doubled",
-    "effectRu": "Бонус шанса доп. хода за Morale удваивается",
+    "effectRu": "Бонус шанса доп. хода за мораль удваивается",
     "sub": "Resolve",
     "needs": "Leadership",
     "descEn": "Extra turn chance per Morale bonus is doubled",
-    "descRu": "Бонус шанса доп. хода за Morale удваивается"
+    "descRu": "Бонус шанса доп. хода за мораль удваивается"
   },
   {
     "skill": "Battlecraft",
@@ -115,33 +115,33 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Battle Focus",
     "requires": "Battle Magic",
     "effect": "+1 Focus Charge at round start is doubled",
-    "effectRu": "+1 Focus Charge в начале раунда удваивается",
+    "effectRu": "+1 заряд фокуса в начале раунда удваивается",
     "sub": "Battle Focus",
     "needs": "Battle Magic",
     "descEn": "+1 Focus Charge at round start is doubled",
-    "descRu": "+1 Focus Charge в начале раунда удваивается"
+    "descRu": "+1 заряд фокуса в начале раунда удваивается"
   },
   {
     "skill": "Battlecraft",
     "subskill": "Manacraft",
     "requires": "Recruitment",
     "effect": "Max mana from Attack/Defense bonus is doubled",
-    "effectRu": "Бонус макс. маны от Attack/Defense удваивается",
+    "effectRu": "Бонус макс. маны от атаки/защиты удваивается",
     "sub": "Manacraft",
     "needs": "Recruitment",
     "descEn": "Max mana from Attack/Defense bonus is doubled",
-    "descRu": "Бонус макс. маны от Attack/Defense удваивается"
+    "descRu": "Бонус макс. маны от атаки/защиты удваивается"
   },
   {
     "skill": "Leadership",
     "subskill": "Avatar of Fury",
     "requires": "Summon Avatar",
     "effect": "Avatar Attack scaling bonus is doubled",
-    "effectRu": "Бонус Attack аватара удваивается",
+    "effectRu": "Бонус атаки аватара удваивается",
     "sub": "Avatar of Fury",
     "needs": "Summon Avatar",
     "descEn": "Avatar Attack scaling bonus is doubled",
-    "descRu": "Бонус Attack аватара удваивается"
+    "descRu": "Бонус атаки аватара удваивается"
   },
   {
     "skill": "Leadership",
@@ -170,11 +170,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Battle March",
     "requires": "Offense",
     "effect": "Focus per attack bonus is doubled",
-    "effectRu": "Бонус Focus за атаку удваивается",
+    "effectRu": "Бонус фокуса за атаку удваивается",
     "sub": "Battle March",
     "needs": "Offense",
     "descEn": "Focus per attack bonus is doubled",
-    "descRu": "Бонус Focus за атаку удваивается"
+    "descRu": "Бонус фокуса за атаку удваивается"
   },
   {
     "skill": "Luck",
@@ -192,11 +192,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Beastly Confidence",
     "requires": "Primal Magic",
     "effect": "Lucky Strike chance per Luck bonus is doubled",
-    "effectRu": "Бонус шанса Lucky Strike за Luck удваивается",
+    "effectRu": "Бонус шанса удачного удара за удачу удваивается",
     "sub": "Beastly Confidence",
     "needs": "Primal Magic",
     "descEn": "Lucky Strike chance per Luck bonus is doubled",
-    "descRu": "Бонус шанса Lucky Strike за Luck удваивается"
+    "descRu": "Бонус шанса удачного удара за удачу удваивается"
   },
   {
     "skill": "Luck",
@@ -214,55 +214,55 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Chronic Weakness",
     "requires": "Nightshade Magic",
     "effect": "Chronic Weakness effect is doubled",
-    "effectRu": "Эффект Chronic Weakness удваивается",
+    "effectRu": "Эффект хронической слабости удваивается",
     "sub": "Chronic Weakness",
     "needs": "Nightshade Magic",
     "descEn": "Chronic Weakness effect is doubled",
-    "descRu": "Эффект Chronic Weakness удваивается"
+    "descRu": "Эффект хронической слабости удваивается"
   },
   {
     "skill": "Resistance",
     "subskill": "Mage Protector's Authority",
     "requires": "Battle Magic",
     "effect": "Defense from Knowledge bonus is doubled",
-    "effectRu": "Бонус Defense от Knowledge удваивается",
+    "effectRu": "Бонус защиты от знания удваивается",
     "sub": "Mage Protector's Authority",
     "needs": "Battle Magic",
     "descEn": "Defense from Knowledge bonus is doubled",
-    "descRu": "Бонус Defense от Knowledge удваивается"
+    "descRu": "Бонус защиты от знания удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "One for All",
     "requires": "Offense",
     "effect": "Attack per adjacent enemy bonus is doubled",
-    "effectRu": "Бонус Attack за соседних врагов удваивается",
+    "effectRu": "Бонус атаки за соседних врагов удваивается",
     "sub": "One for All",
     "needs": "Offense",
     "descEn": "Attack per adjacent enemy bonus is doubled",
-    "descRu": "Бонус Attack за соседних врагов удваивается"
+    "descRu": "Бонус атаки за соседних врагов удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "All for One",
     "requires": "Defence",
     "effect": "Defense per adjacent ally bonus is doubled",
-    "effectRu": "Бонус Defense за соседних союзников удваивается",
+    "effectRu": "Бонус защиты за соседних союзников удваивается",
     "sub": "All for One",
     "needs": "Defence",
     "descEn": "Defense per adjacent ally bonus is doubled",
-    "descRu": "Бонус Defense за соседних союзников удваивается"
+    "descRu": "Бонус защиты за соседних союзников удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "Elite Guards",
     "requires": "Recruitment",
     "effect": "T1–T3 Attack/Defense bonus is doubled",
-    "effectRu": "Бонус Attack/Defense T1–T3 удваивается",
+    "effectRu": "Бонус атаки/защиты T1–T3 удваивается",
     "sub": "Elite Guards",
     "needs": "Recruitment",
     "descEn": "T1–T3 Attack/Defense bonus is doubled",
-    "descRu": "Бонус Attack/Defense T1–T3 удваивается"
+    "descRu": "Бонус атаки/защиты T1–T3 удваивается"
   },
   {
     "skill": "Tactics",
@@ -280,33 +280,33 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Manacraft",
     "requires": "Battlecraft",
     "effect": "Max mana from Attack/Defense bonus is doubled",
-    "effectRu": "Бонус макс. маны от Attack/Defense удваивается",
+    "effectRu": "Бонус макс. маны от атаки/защиты удваивается",
     "sub": "Manacraft",
     "needs": "Battlecraft",
     "descEn": "Max mana from Attack/Defense bonus is doubled",
-    "descRu": "Бонус макс. маны от Attack/Defense удваивается"
+    "descRu": "Бонус макс. маны от атаки/защиты удваивается"
   },
   {
     "skill": "Recruitment",
     "subskill": "Hymn to the Martyrs",
     "requires": "Defence",
     "effect": "Focus when taking damage bonus is doubled",
-    "effectRu": "Бонус Focus при получении урона удваивается",
+    "effectRu": "Бонус фокуса при получении урона удваивается",
     "sub": "Hymn to the Martyrs",
     "needs": "Defence",
     "descEn": "Focus when taking damage bonus is doubled",
-    "descRu": "Бонус Focus при получении урона удваивается"
+    "descRu": "Бонус фокуса при получении урона удваивается"
   },
   {
     "skill": "Recruitment",
     "subskill": "Elite Guards",
     "requires": "Tactics",
     "effect": "T1–T3 Attack/Defense bonus is doubled",
-    "effectRu": "Бонус Attack/Defense T1–T3 удваивается",
+    "effectRu": "Бонус атаки/защиты T1–T3 удваивается",
     "sub": "Elite Guards",
     "needs": "Tactics",
     "descEn": "T1–T3 Attack/Defense bonus is doubled",
-    "descRu": "Бонус Attack/Defense T1–T3 удваивается"
+    "descRu": "Бонус атаки/защиты T1–T3 удваивается"
   },
   {
     "skill": "Recruitment",
@@ -357,11 +357,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Stargazer",
     "requires": "Scouting",
     "effect": "+250 Astrology Points/day is doubled",
-    "effectRu": "Бонус +250 Astrology Points/день удваивается",
+    "effectRu": "Бонус +250 очков астрологии/день удваивается",
     "sub": "Stargazer",
     "needs": "Scouting",
     "descEn": "+250 Astrology Points/day is doubled",
-    "descRu": "Бонус +250 Astrology Points/день удваивается"
+    "descRu": "Бонус +250 очков астрологии/день удваивается"
   },
   {
     "skill": "Wisdom",
@@ -379,44 +379,44 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Battle Focus",
     "requires": "Battlecraft",
     "effect": "+1 Focus Charge at round start is doubled",
-    "effectRu": "+1 Focus Charge в начале раунда удваивается",
+    "effectRu": "+1 заряд фокуса в начале раунда удваивается",
     "sub": "Battle Focus",
     "needs": "Battlecraft",
     "descEn": "+1 Focus Charge at round start is doubled",
-    "descRu": "+1 Focus Charge в начале раунда удваивается"
+    "descRu": "+1 заряд фокуса в начале раунда удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Chaos Reigns",
     "requires": "Primal Magic",
     "effect": "Chaos Reigns effect is doubled",
-    "effectRu": "Эффект Chaos Reigns удваивается",
+    "effectRu": "Эффект царства хаоса удваивается",
     "sub": "Chaos Reigns",
     "needs": "Primal Magic",
     "descEn": "Chaos Reigns effect is doubled",
-    "descRu": "Эффект Chaos Reigns удваивается"
+    "descRu": "Эффект царства хаоса удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Battle Mage's Authority",
     "requires": "Sorcery",
     "effect": "Attack +20% from Spell Power is doubled",
-    "effectRu": "Бонус Attack +20% от Spell Power удваивается",
+    "effectRu": "Бонус атаки +20% от силы заклинаний удваивается",
     "sub": "Battle Mage's Authority",
     "needs": "Sorcery",
     "descEn": "Attack +20% from Spell Power is doubled",
-    "descRu": "Бонус Attack +20% от Spell Power удваивается"
+    "descRu": "Бонус атаки +20% от силы заклинаний удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Mage Protector's Authority",
     "requires": "Resistance",
     "effect": "Defense +20% from Knowledge is doubled",
-    "effectRu": "Бонус Defense +20% от Knowledge удваивается",
+    "effectRu": "Бонус защиты +20% от знания удваивается",
     "sub": "Mage Protector's Authority",
     "needs": "Resistance",
     "descEn": "Defense +20% from Knowledge is doubled",
-    "descRu": "Бонус Defense +20% от Knowledge удваивается"
+    "descRu": "Бонус защиты +20% от знания удваивается"
   },
   {
     "skill": "Sorcery",
@@ -434,11 +434,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Battle Mage's Authority",
     "requires": "Battle Magic",
     "effect": "Attack +20% from Spell Power is doubled",
-    "effectRu": "Бонус Attack +20% от Spell Power удваивается",
+    "effectRu": "Бонус атаки +20% от силы заклинаний удваивается",
     "sub": "Battle Mage's Authority",
     "needs": "Battle Magic",
     "descEn": "Attack +20% from Spell Power is doubled",
-    "descRu": "Бонус Attack +20% от Spell Power удваивается"
+    "descRu": "Бонус атаки +20% от силы заклинаний удваивается"
   },
   {
     "skill": "Sorcery",
@@ -467,44 +467,44 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Avatar of Fury",
     "requires": "Leadership",
     "effect": "Avatar Attack scaling bonus is doubled",
-    "effectRu": "Бонус Attack аватара удваивается",
+    "effectRu": "Бонус атаки аватара удваивается",
     "sub": "Avatar of Fury",
     "needs": "Leadership",
     "descEn": "Avatar Attack scaling bonus is doubled",
-    "descRu": "Бонус Attack аватара удваивается"
+    "descRu": "Бонус атаки аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "Avatar of Toughness",
     "requires": "Defence",
     "effect": "Avatar Defense scaling bonus is doubled",
-    "effectRu": "Бонус Defense аватара удваивается",
+    "effectRu": "Бонус защиты аватара удваивается",
     "sub": "Avatar of Toughness",
     "needs": "Defence",
     "descEn": "Avatar Defense scaling bonus is doubled",
-    "descRu": "Бонус Defense аватара удваивается"
+    "descRu": "Бонус защиты аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "Avatar of Celerity",
     "requires": "Insight",
     "effect": "Avatar Speed/Initiative +2 is doubled",
-    "effectRu": "Бонус Speed/Initiative аватара удваивается",
+    "effectRu": "Бонус скорости/инициативы аватара удваивается",
     "sub": "Avatar of Celerity",
     "needs": "Insight",
     "descEn": "Avatar Speed/Initiative +2 is doubled",
-    "descRu": "Бонус Speed/Initiative аватара удваивается"
+    "descRu": "Бонус скорости/инициативы аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "All Life is Endless",
     "requires": "Arcane Magic",
     "effect": "Summon Avatar synergy effect is doubled",
-    "effectRu": "Синергия Summon Avatar удваивается",
+    "effectRu": "Синергия призыва аватара удваивается",
     "sub": "All Life is Endless",
     "needs": "Arcane Magic",
     "descEn": "Summon Avatar synergy effect is doubled",
-    "descRu": "Синергия Summon Avatar удваивается"
+    "descRu": "Синергия призыва аватара удваивается"
   },
   {
     "skill": "Daylight Magic",
@@ -555,11 +555,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Chronic Weakness",
     "requires": "Resistance",
     "effect": "Chronic Weakness effect is doubled",
-    "effectRu": "Эффект Chronic Weakness удваивается",
+    "effectRu": "Эффект хронической слабости удваивается",
     "sub": "Chronic Weakness",
     "needs": "Resistance",
     "descEn": "Chronic Weakness effect is doubled",
-    "descRu": "Эффект Chronic Weakness удваивается"
+    "descRu": "Эффект хронической слабости удваивается"
   },
   {
     "skill": "Nightshade Magic",
@@ -588,11 +588,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "All Life is Endless",
     "requires": "Summon Avatar",
     "effect": "Summon Avatar synergy effect is doubled",
-    "effectRu": "Синергия Summon Avatar удваивается",
+    "effectRu": "Синергия призыва аватара удваивается",
     "sub": "All Life is Endless",
     "needs": "Summon Avatar",
     "descEn": "Summon Avatar synergy effect is doubled",
-    "descRu": "Синергия Summon Avatar удваивается"
+    "descRu": "Синергия призыва аватара удваивается"
   },
   {
     "skill": "Arcane Magic",
@@ -610,22 +610,22 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Beastly Confidence",
     "requires": "Luck",
     "effect": "Lucky Strike chance per Luck bonus is doubled",
-    "effectRu": "Бонус шанса Lucky Strike за Luck удваивается",
+    "effectRu": "Бонус шанса удачного удара за удачу удваивается",
     "sub": "Beastly Confidence",
     "needs": "Luck",
     "descEn": "Lucky Strike chance per Luck bonus is doubled",
-    "descRu": "Бонус шанса Lucky Strike за Luck удваивается"
+    "descRu": "Бонус шанса удачного удара за удачу удваивается"
   },
   {
     "skill": "Primal Magic",
     "subskill": "Chaos Reigns",
     "requires": "Battle Magic",
     "effect": "Chaos Reigns effect is doubled",
-    "effectRu": "Эффект Chaos Reigns удваивается",
+    "effectRu": "Эффект царства хаоса удваивается",
     "sub": "Chaos Reigns",
     "needs": "Battle Magic",
     "descEn": "Chaos Reigns effect is doubled",
-    "descRu": "Эффект Chaos Reigns удваивается"
+    "descRu": "Эффект царства хаоса удваивается"
   },
   {
     "skill": "Primal Magic",
@@ -720,11 +720,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Stargazer",
     "requires": "Wisdom",
     "effect": "+250 Astrology Points/day is doubled",
-    "effectRu": "Бонус +250 Astrology Points/день удваивается",
+    "effectRu": "Бонус +250 очков астрологии/день удваивается",
     "sub": "Stargazer",
     "needs": "Wisdom",
     "descEn": "+250 Astrology Points/day is doubled",
-    "descRu": "Бонус +250 Astrology Points/день удваивается"
+    "descRu": "Бонус +250 очков астрологии/день удваивается"
   },
   {
     "skill": "Diplomacy",
@@ -808,22 +808,22 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Experimenter",
     "requires": "Insight",
     "effect": "+5 Alchemical Dust bonus is doubled",
-    "effectRu": "Бонус +5 Alchemical Dust удваивается",
+    "effectRu": "Бонус +5 алхимической пыли удваивается",
     "sub": "Experimenter",
     "needs": "Insight",
     "descEn": "+5 Alchemical Dust bonus is doubled",
-    "descRu": "Бонус +5 Alchemical Dust удваивается"
+    "descRu": "Бонус +5 алхимической пыли удваивается"
   },
   {
     "skill": "Insight",
     "subskill": "Avatar of Celerity",
     "requires": "Summon Avatar",
     "effect": "Avatar Speed/Initiative +2 is doubled",
-    "effectRu": "Бонус Speed/Initiative аватара удваивается",
+    "effectRu": "Бонус скорости/инициативы аватара удваивается",
     "sub": "Avatar of Celerity",
     "needs": "Summon Avatar",
     "descEn": "Avatar Speed/Initiative +2 is doubled",
-    "descRu": "Бонус Speed/Initiative аватара удваивается"
+    "descRu": "Бонус скорости/инициативы аватара удваивается"
   },
   {
     "skill": "Insight",
@@ -841,11 +841,11 @@ window.HOE_BUILDER_SYNERGIES = [
     "subskill": "Experimenter",
     "requires": "Economy",
     "effect": "+5 Alchemical Dust bonus is doubled",
-    "effectRu": "Бонус +5 Alchemical Dust удваивается",
+    "effectRu": "Бонус +5 алхимической пыли удваивается",
     "sub": "Experimenter",
     "needs": "Economy",
     "descEn": "+5 Alchemical Dust bonus is doubled",
-    "descRu": "Бонус +5 Alchemical Dust удваивается"
+    "descRu": "Бонус +5 алхимической пыли удваивается"
   },
   {
     "skill": "Insight",

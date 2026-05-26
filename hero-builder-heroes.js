@@ -25,7 +25,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Devir",
     "specialtyDesc": "Minotaur growth in your cities increases by 1. Under his command, Minotaurs gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Minotaurs lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Minotaur growth in your cities increases by 1. Under his command, Minotaurs gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Minotaurs lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Minotaur в городах +1/нед. Под командованием героя Minotaurs получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Minotaurs Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Minotaur в городах +1/нед. Под командованием героя Minotaurs получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Minotaurs атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Leadership",
@@ -43,7 +43,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Medusae",
     "specialtyDesc": "Medusae growth in your cities increases by 1. Under her command, Medusae gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Medusae lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Medusae growth in your cities increases by 1. Under her command, Medusae gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Medusae lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Medusae в городах +1/нед. Под командованием героя Medusae получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Medusae Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Medusae в городах +1/нед. Под командованием героя Medusae получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Medusae атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Defence",
@@ -60,7 +60,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Gleard",
     "specialtyDesc": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Arcane Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания тайной магии, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Defence",
@@ -77,7 +77,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Kieran",
     "specialtyDesc": "Troglodyte growth in your cities increases by 1. Under his command, Troglodytes gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Troglodytes lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Troglodyte growth in your cities increases by 1. Under his command, Troglodytes gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Troglodytes lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Troglodyte в городах +1/нед. Под командованием героя Troglodytes получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Troglodytes Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Troglodyte в городах +1/нед. Под командованием героя Troglodytes получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Troglodytes атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Offense",
@@ -94,7 +94,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Mouaren",
     "specialtyDesc": "Infiltrator growth in your cities increases by 1. Under his command, Infiltrators gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Infiltrators lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Infiltrator growth in your cities increases by 1. Under his command, Infiltrators gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Infiltrators lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Infiltrator в городах +1/нед. Под командованием героя Infiltrators получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Infiltrators Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Infiltrator в городах +1/нед. Под командованием героя Infiltrators получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Infiltrators атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Scouting",
@@ -112,7 +112,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Rhea",
     "specialtyDesc": "The hero and army gain +1 Luck, plus +1 more for every 6 hero levels.",
     "specialtyDescEn": "The hero and army gain +1 Luck, plus +1 more for every 6 hero levels.",
-    "specialtyDescRu": "Герой и армия получают +1 Luck и ещё +1 за каждые 6 ур. героя.",
+    "specialtyDescRu": "Герой и армия получают +1 к удаче и ещё +1 за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Luck",
@@ -169,7 +169,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Glastor",
     "specialtyDesc": "Produces +500 gold per day, plus another +250 for every 5 hero levels.",
     "specialtyDescEn": "Produces +500 gold per day, plus another +250 for every 5 hero levels.",
-    "specialtyDescRu": "Produces +500 золота/день, plus another +250 for every 5 ур. героя.",
+    "specialtyDescRu": "+500 золота/день и ещё +250 за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Economy",
@@ -204,7 +204,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Lodos",
     "specialtyDesc": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Nightshade Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии сумрака, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -221,7 +221,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Motley",
     "specialtyDesc": "Onyx Dancer growth in your cities increases by 1. Under her command, Onyx Dancers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Onyx Dancers lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Onyx Dancer growth in your cities increases by 1. Under her command, Onyx Dancers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Onyx Dancers lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Onyx Dancer в городах +1/нед. Под командованием героя Onyx Dancers получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Onyx Dancers Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Onyx Dancer в городах +1/нед. Под командованием героя Onyx Dancers получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Onyx Dancers атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Sorcery",
@@ -255,7 +255,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Sunny Rauktol",
     "specialtyDesc": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Daylight Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии дневного света, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Battle Magic",
@@ -272,7 +272,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Typhona",
     "specialtyDesc": "Hydra growth in your cities increases by 1. Under her command, Hydras gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Hydras lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Hydra growth in your cities increases by 1. Under her command, Hydras gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Hydras lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Hydra в городах +1/нед. Под командованием героя Hydras получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Hydras Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Hydra в городах +1/нед. Под командованием героя Hydras получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Hydras атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Triumvirate's Strength",
@@ -289,7 +289,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Ylwari",
     "specialtyDesc": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "силу убеждения increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Сила убеждения +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Nightshade Magic",
@@ -306,7 +306,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Zakron",
     "specialtyDesc": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "магический урон dealt increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Наносимый магический урон +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Arcane Magic",
@@ -323,7 +323,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Firewall Adept",
     "specialtyDesc": "She starts with the Masterful Firewall spell. This version of the spell stays active for +1 round(s). While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
     "specialtyDescEn": "She starts with the Masterful Firewall spell. This version of the spell stays active for +1 round(s). While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
-    "specialtyDescRu": "She Начинает с the Masterful Firewall spell. This version of the spell stays active for +1 round(s). While casting this spell, effective силу заклинаний is increased by 1 for every 3 ур. героя.",
+    "specialtyDescRu": "Начинает с Masterful Firewall — версия действует на +1 раунд дольше. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -341,7 +341,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Mirror Mage",
     "specialtyDesc": "She starts with the Masterful Mirror Copy spell. This version of the spell can target enemy creatures. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
     "specialtyDescEn": "She starts with the Masterful Mirror Copy spell. This version of the spell can target enemy creatures. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
-    "specialtyDescRu": "She Начинает с the Masterful Mirror Copy spell. This version of the spell can target вражеские существа. While casting this spell, effective силу заклинаний is increased by 1 for every 3 ур. героя.",
+    "specialtyDescRu": "Начинает с Masterful Mirror Copy — версия может нацеливаться на вражеских существ. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Arcane Magic",
@@ -359,7 +359,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Herbomancer Lord",
     "specialtyDesc": "Herbomancer growth in your cities increases by 1. Under his command, Herbomancers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defense increase by 1 for every 3 hero levels, and enemy Herbomancers lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Herbomancer growth in your cities increases by 1. Under his command, Herbomancers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defense increase by 1 for every 3 hero levels, and enemy Herbomancers lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Herbomancer в городах +1/нед. Под его командованием Herbomancer получают +1 Speed, +1 Initiative и +20% HP. Attack и Defence +1 за каждые 3 ур. героя; у вражеских Herbomancer — на столько же меньше.",
+    "specialtyDescRu": "Рост Herbomancer в городах +1/нед. Под командованием героя Herbomancers получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Herbomancers атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Thaumaturgy",
@@ -377,7 +377,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Ice Weaver",
     "specialtyDesc": "She starts with the Masterful Ice Bolt spell. The Initiative penalty of this version of the spell is twice as strong. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
     "specialtyDescEn": "She starts with the Masterful Ice Bolt spell. The Initiative penalty of this version of the spell is twice as strong. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
-    "specialtyDescRu": "She Начинает с the Masterful Ice Bolt spell. The Initiative penalty of this version of the spell is twice as strong. While casting this spell, effective силу заклинаний is increased by 1 for every 3 ур. героя.",
+    "specialtyDescRu": "Начинает с Masterful Ice Bolt — штраф к инициативе этой версии вдвое сильнее. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -395,7 +395,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Chain Lightning",
     "specialtyDesc": "He starts with the Masterful Chain Lightning spell. This version of the spell loses half as much Damage when jumping between targets. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
     "specialtyDescEn": "He starts with the Masterful Chain Lightning spell. This version of the spell loses half as much Damage when jumping between targets. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
-    "specialtyDescRu": "He Начинает с the Masterful Chain Lightning spell. This version of the spell loses half as much Damage when jumping between targets. While casting this spell, effective силу заклинаний is increased by 1 for every 3 ур. героя.",
+    "specialtyDescRu": "Начинает с Masterful Chain Lightning — версия теряет вдвое меньше урона при прыжках между целями. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Arcane Magic",
@@ -413,7 +413,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Avatar Summoner",
     "specialtyDesc": "Her summoned Avatar is immune to Magic Damage. When casting Summon Avatar, its effective Spell Power is increased by +1 per 3 hero levels.",
     "specialtyDescEn": "Her summoned Avatar is immune to Magic Damage. When casting Summon Avatar, its effective Spell Power is increased by +1 per 3 hero levels.",
-    "specialtyDescRu": "Her summoned Avatar is immune to магический урон. When casting Summon Avatar, its effective силу заклинаний is increased by +1 per 3 ур. героя.",
+    "specialtyDescRu": "Призванный аватар невосприимчив к магическому урону. При касте Summon Avatar эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Summon Avatar",
@@ -431,7 +431,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Wandering Musician",
     "specialtyDesc": "At the beginning of each round, he generates +2 Focus Point(s), plus another +1 for every 3 hero levels. The enemy loses the same amount of Focus Points.",
     "specialtyDescEn": "At the beginning of each round, he generates +2 Focus Point(s), plus another +1 for every 3 hero levels. The enemy loses the same amount of Focus Points.",
-    "specialtyDescRu": "В начале каждого раунда генерирует +2 Focus и ещё +1 за каждые 3 ур. героя. Враг теряет столько же Focus.",
+    "specialtyDescRu": "В начале каждого раунда генерирует +2 фокуса и ещё +1 за каждые 3 ур. героя. Враг теряет столько же фокуса.",
     "start": [
       {
         "skill": "Sorcery",
@@ -449,7 +449,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Spiritual Vigour",
     "specialtyDesc": "She gains +1 spell cap for each Global Map spell. Her maximum mana increases by 10%, plus another 5% for every 5 hero levels.",
     "specialtyDescEn": "She gains +1 spell cap for each Global Map spell. Her maximum mana increases by 10%, plus another 5% for every 5 hero levels.",
-    "specialtyDescRu": "She gains +1 spell cap for each глобальное заклинание карты. Her максимальная мана increases by 10%, plus another 5% for every 5 ур. героя.",
+    "specialtyDescRu": "+1 слот глобального заклинания за каждое глобальное заклинание. Максимальная мана +10% и ещё +5% за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Wisdom",
@@ -467,7 +467,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Cave Master",
     "specialtyDesc": "He starts with the Masterful Cave In spell. The obstacles created by this version of the spell must be damaged +1 more time(s) to be destroyed. While casting this spell, effective Spell Power is increased by 1 for every hero level(s).",
     "specialtyDescEn": "He starts with the Masterful Cave In spell. The obstacles created by this version of the spell must be damaged +1 more time(s) to be destroyed. While casting this spell, effective Spell Power is increased by 1 for every hero level(s).",
-    "specialtyDescRu": "He Начинает с the Masterful Cave In spell. The obstacles created by this version of the spell must be damaged +1 more time(s) to be destroyed. While casting this spell, effective силу заклинаний is increased by 1 for every ур. героя(s).",
+    "specialtyDescRu": "Начинает с Masterful Cave In — препятствия нужно повредить на +1 раз больше для уничтожения. При касте эффективная сила заклинаний +1 за каждые ур. героя.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -485,7 +485,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Diplomatic Retainer",
     "specialtyDesc": "Keeps the army when fleeing from battle against neutral squads. +5% Persuasion Power when using Diplomacy, plus another 1% for every 4 hero levels.",
     "specialtyDescEn": "Keeps the army when fleeing from battle against neutral squads. +5% Persuasion Power when using Diplomacy, plus another 1% for every 4 hero levels.",
-    "specialtyDescRu": "Keeps the army when fleeing from battle against neutral squads. +5% силу убеждения when using Diplomacy, plus another 1% for every 4 ур. героя.",
+    "specialtyDescRu": "Сохраняет армию при бегстве от нейтральных отрядов. +5% силы убеждения при дипломатии и ещё +1% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Diplomacy",
@@ -502,7 +502,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Wish to Learn",
     "specialtyDesc": "When leveling up, gains 1 additional attribute point(s) for every 2 hero levels. Gains +5% XP for every 2 hero levels.",
     "specialtyDescEn": "When leveling up, gains 1 additional attribute point(s) for every 2 hero levels. Gains +5% XP for every 2 hero levels.",
-    "specialtyDescRu": "При повышении уровня +1 к случайной характеристике за каждые 2 ур. героя. +5% опыта за каждые 2 ур. героя.",
+    "specialtyDescRu": "При повышении уровня получает +1 к случайной характеристике за каждые 2 ур. героя. +5% опыта за каждые 2 ур. героя.",
     "start": [
       {
         "skill": "Insight",
@@ -536,7 +536,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Hksmilla's Step",
     "specialtyDesc": "He starts with the Masterful Fireball spell. This version of the spell hits a larger area. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
     "specialtyDescEn": "He starts with the Masterful Fireball spell. This version of the spell hits a larger area. While casting this spell, effective Spell Power is increased by 1 for every 3 hero levels.",
-    "specialtyDescRu": "Начинает с Masterful Fireball — увеличенная область. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
+    "specialtyDescRu": "Начинает с Masterful Fireball — увеличенная область поражения. При касте эффективная сила заклинаний +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Murmuring",
@@ -554,7 +554,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Faunsong",
     "specialtyDesc": "Faun growth in your cities increases by 1. Under her command, Fauns gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defense increase by 1 for every 3 hero levels, and enemy Fauns lose an equal amount of Attack and Defense.",
     "specialtyDescEn": "Faun growth in your cities increases by 1. Under her command, Fauns gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defense increase by 1 for every 3 hero levels, and enemy Fauns lose an equal amount of Attack and Defense.",
-    "specialtyDescRu": "Рост Faun в городах +1/нед. Под командованием героя Fauns получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Fauns Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Faun в городах +1/нед. Под командованием героя Fauns получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Fauns атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -571,7 +571,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Shooter",
     "specialtyDesc": "Creatures in his army deal +10% basic attack Damage, plus an additional 1% for every 2 hero levels. Additionally, they deal +1% Ranged and Long Reach Damage for every 2 hero levels.",
     "specialtyDescEn": "Creatures in his army deal +10% basic attack Damage, plus an additional 1% for every 2 hero levels. Additionally, they deal +1% Ranged and Long Reach Damage for every 2 hero levels.",
-    "specialtyDescRu": "Существа армии наносят +10% урона базовых атак и +1% за каждые 2 ур. героя. Дополнительно +1% урона Ranged/Long Reach за каждые 2 ур. героя.",
+    "specialtyDescRu": "Существа армии наносят +10% урона базовых атак и +1% за каждые 2 ур. героя. Дополнительно +1% урона дальнего/длинного радиуса за каждые 2 ур. героя.",
     "start": [
       {
         "skill": "Offense",
@@ -588,7 +588,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Crystal Harvest",
     "specialtyDesc": "She produces +1 Crystals per day, plus another +1 for every 5 hero levels. Increases the amount of Crystals found on the map by 100%.",
     "specialtyDescEn": "She produces +1 Crystals per day, plus another +1 for every 5 hero levels. Increases the amount of Crystals found on the map by 100%.",
-    "specialtyDescRu": "She produces +1 кристаллы per day, plus another +1 for every 5 ур. героя. Increases the amount of кристаллы found on the map by 100%.",
+    "specialtyDescRu": "+1 кристалл/день и ещё +1 за каждые 5 ур. героя. Количество кристаллов на карте увеличено на 100%.",
     "start": [
       {
         "skill": "Sorcery",
@@ -605,7 +605,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Lucky Commander",
     "specialtyDesc": "She has +1 Luck, and creatures under her command have an increased chance of triggering a Lucky Strike: +2% chance per Luck point. For every 4 levels, this bonus increases by 1%.",
     "specialtyDescEn": "She has +1 Luck, and creatures under her command have an increased chance of triggering a Lucky Strike: +2% chance per Luck point. For every 4 levels, this bonus increases by 1%.",
-    "specialtyDescRu": "+1 Luck. Союзники получают +2% шанса Lucky Strike за пункт Luck; бонус +1% за каждые 4 ур. героя.",
+    "specialtyDescRu": "+1 к удаче. Союзники получают +2% шанса удачного удара за пункт удачи; бонус +1% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Luck",
@@ -640,7 +640,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Duke of Battle",
     "specialtyDesc": "Friendly creatures gain improved Initiative when using Tactics.",
     "specialtyDescEn": "Friendly creatures gain improved Initiative when using Tactics.",
-    "specialtyDescRu": "дружественные существа gain improved Initiative when using Tactics.",
+    "specialtyDescRu": "Союзники получают улучшенную инициативу от бонусов тактики.",
     "start": [
       {
         "skill": "Tactics",
@@ -657,7 +657,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Duke of Rage",
     "specialtyDesc": "Creatures deal increased damage when Morale triggers.",
     "specialtyDescEn": "Creatures deal increased damage when Morale triggers.",
-    "specialtyDescRu": "Существа наносят повышенный урон при срабатывании Morale.",
+    "specialtyDescRu": "Существа наносят повышенный урон при срабатывании морали.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -674,7 +674,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Goldentongue",
     "specialtyDesc": "All friendly creatures gain +1 Morale. The chance of an additional turn increases by 2% per Morale point.",
     "specialtyDescEn": "All friendly creatures gain +1 Morale. The chance of an additional turn increases by 2% per Morale point.",
-    "specialtyDescRu": "All дружественные существа gain +1 Morale. The chance of an additional turn increases by 2% per Morale point.",
+    "specialtyDescRu": "Все союзники получают +1 к морали. Шанс дополнительного хода +2% за пункт морали.",
     "start": [
       {
         "skill": "Leadership",
@@ -691,7 +691,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Locust Master",
     "specialtyDesc": "Locust growth in your cities increases by 1. Under his command, Locusts gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels.",
     "specialtyDescEn": "Locust growth in your cities increases by 1. Under his command, Locusts gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels.",
-    "specialtyDescRu": "Locust рост в городах +1/нед.. Under his command, Locusts gain 1 Speed, 1 Initiative, and 20% HP. Their Attack и Defence increase by 1 for every 3 ур. героя.",
+    "specialtyDescRu": "Рост Locust в городах +1/нед. Под командованием героя Locusts получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Offense",
@@ -725,7 +725,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Nor",
     "specialtyDesc": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
     "specialtyDescEn": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
-    "specialtyDescRu": "When дружественные существа Wait/Skip, they gain additional Attack or Defense bonuses.",
+    "specialtyDescRu": "Когда союзники ждут или пропускают ход, они получают дополнительные бонусы к атаке или защите.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -742,7 +742,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Speed Commander",
     "specialtyDesc": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
     "specialtyDescEn": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
-    "specialtyDescRu": "Has +10% очков передвижения, plus 2.5% more for every 6 ур. героя.",
+    "specialtyDescRu": "Имеет +10% очков передвижения и ещё +2.5% за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Logistics",
@@ -759,7 +759,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Swarm Lord",
     "specialtyDesc": "Starts with Advanced Summon Swarm and improved Fire Larvae synergy.",
     "specialtyDescEn": "Starts with Advanced Summon Swarm and improved Fire Larvae synergy.",
-    "specialtyDescRu": "Начинает с Продвинутый Summon Swarm and improved Fire Larvae synergy.",
+    "specialtyDescRu": "Начинает с продвинутого Summon Swarm и улучшенной синергией Fire Larvae.",
     "start": [
       {
         "skill": "Summon Swarm",
@@ -797,7 +797,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Crystal Duke",
     "specialtyDesc": "Produces +1 Crystal per day, plus another +1 for every 5 hero levels.",
     "specialtyDescEn": "Produces +1 Crystal per day, plus another +1 for every 5 hero levels.",
-    "specialtyDescRu": "+1 кристалл/день и ещё +1 за каждые 5 ур. героя. Количество кристаллов на карте увеличено на 100%.",
+    "specialtyDescRu": "+1 кристалл/день и ещё +1 за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Economy",
@@ -831,7 +831,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Wayfarer",
     "specialtyDesc": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
     "specialtyDescEn": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
-    "specialtyDescRu": "Has +10% очков передвижения, plus 2.5% more for every 6 ур. героя.",
+    "specialtyDescRu": "Имеет +10% очков передвижения и ещё +2.5% за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Logistics",
@@ -848,7 +848,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Khariseth",
     "specialtyDesc": "Primal Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Primal Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Primal Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания первичной магии, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -865,7 +865,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Haste Herald",
     "specialtyDesc": "Haste and initiative bonuses for friendly creatures.",
     "specialtyDescEn": "Haste and initiative bonuses for friendly creatures.",
-    "specialtyDescRu": "Haste and Initiative bonuses for дружественные существа.",
+    "specialtyDescRu": "Бонусы ускорения и инициативы для союзников.",
     "start": [
       {
         "skill": "Primal Magic",
@@ -882,7 +882,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Shooter",
     "specialtyDesc": "Creatures in her army deal +10% basic attack Damage, plus an additional 1% for every 2 hero levels. Additionally, they deal +1% Ranged and Long Reach Damage for every 2 hero levels.",
     "specialtyDescEn": "Creatures in her army deal +10% basic attack Damage, plus an additional 1% for every 2 hero levels. Additionally, they deal +1% Ranged and Long Reach Damage for every 2 hero levels.",
-    "specialtyDescRu": "Существа армии наносят +10% урона базовых атак и +1% за каждые 2 ур. героя. Дополнительно +1% урона Ranged/Long Reach за каждые 2 ур. героя.",
+    "specialtyDescRu": "Существа армии наносят +10% урона базовых атак и +1% за каждые 2 ур. героя. Дополнительно +1% урона дальнего/длинного радиуса за каждые 2 ур. героя.",
     "start": [
       {
         "skill": "Sorcery",
@@ -900,7 +900,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Blink Master",
     "specialtyDesc": "Summon Avatar and blink-style mobility bonuses.",
     "specialtyDescEn": "Summon Avatar and blink-style mobility bonuses.",
-    "specialtyDescRu": "Бонусы Summon Avatar и мобильности в стиле blink.",
+    "specialtyDescRu": "Усиленный Summon Avatar и бонусы мобильности в стиле blink.",
     "start": [
       {
         "skill": "Summon Avatar",
@@ -934,7 +934,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Tank",
     "specialtyDesc": "Friendly creatures' Defense increases significantly based on hero Defense.",
     "specialtyDescEn": "Friendly creatures' Defense increases significantly based on hero Defense.",
-    "specialtyDescRu": "дружественные существа' Defense increases significantly based on hero Defense.",
+    "specialtyDescRu": "Защита союзников значительно растёт от защиты героя.",
     "start": [
       {
         "skill": "Resistance",
@@ -951,7 +951,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Truth Seeker",
     "specialtyDesc": "Magic Damage taken by friendly creatures is reduced by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Magic Damage taken by friendly creatures is reduced by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "магический урон taken by дружественные существа is reduced by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Получаемый союзниками магический урон снижен на 10% и ещё на 2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Resistance",
@@ -969,7 +969,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Bulwark",
     "specialtyDesc": "Friendly creatures' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Friendly creatures' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "дружественные существа' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Защита союзников увеличивается на 10% от защиты героя и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Defence",
@@ -987,7 +987,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Dread Knight",
     "specialtyDesc": "Tier 6 creatures in the army gain +1 Speed, +1 Initiative, +20% HP. Their Attack and Defence increase by 1 for every 3 hero levels.",
     "specialtyDescEn": "Tier 6 creatures in the army gain +1 Speed, +1 Initiative, +20% HP. Their Attack and Defence increase by 1 for every 3 hero levels.",
-    "specialtyDescRu": "Существа T6 в армии получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя.",
+    "specialtyDescRu": "Существа T6 в армии получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя.",
     "start": [
       {
         "skill": "Tactics",
@@ -1006,7 +1006,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Royal Diplomat",
     "specialtyDesc": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "силу убеждения increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Сила убеждения +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Diplomacy",
@@ -1024,7 +1024,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Marl",
     "specialtyDesc": "Has +10% Movement points, plus 2.5% more for every 6 hero levels. Moves significantly more efficiently on roads.",
     "specialtyDescEn": "Has +10% Movement points, plus 2.5% more for every 6 hero levels. Moves significantly more efficiently on roads.",
-    "specialtyDescRu": "Has +10% очков передвижения, plus 2.5% more for every 6 ур. героя. Значительно эффективнее двигается по дорогам.",
+    "specialtyDescRu": "Имеет +10% очков передвижения и ещё +2.5% за каждые 6 ур. героя. Значительно эффективнее двигается по дорогам.",
     "start": [
       {
         "skill": "Logistics",
@@ -1041,7 +1041,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Scout of Shadowspire",
     "specialtyDesc": "The hero gains +1 sight radius, plus another +1 for every 5 hero levels.",
     "specialtyDescEn": "The hero gains +1 sight radius, plus another +1 for every 5 hero levels.",
-    "specialtyDescRu": "The hero gains +1 радиус обзора, plus another +1 for every 5 ур. героя.",
+    "specialtyDescRu": "Герой получает +1 к радиусу обзора и ещё +1 за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Scouting",
@@ -1059,7 +1059,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Onkos",
     "specialtyDesc": "Friendly creatures' Attack increases by 10% of the hero's Attack, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Friendly creatures' Attack increases by 10% of the hero's Attack, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "дружественные существа' Attack increases by 10% of the hero's Attack, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Атака союзников увеличивается на 10% от атаки героя и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Offense",
@@ -1076,7 +1076,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Tarius",
     "specialtyDesc": "Universal Necromancer hero. Starts with Advanced Necromancy.",
     "specialtyDescEn": "Universal Necromancer hero. Starts with Advanced Necromancy.",
-    "specialtyDescRu": "Универсальный герой Necropolis. Начинает с продвинутой Necromancy.",
+    "specialtyDescRu": "Универсальный некромант. Начинает с продвинутой некромантии.",
     "start": [
       {
         "skill": "Necromancy",
@@ -1093,7 +1093,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Zam",
     "specialtyDesc": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
     "specialtyDescEn": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
-    "specialtyDescRu": "When дружественные существа Wait/Skip, they gain additional Attack or Defense bonuses.",
+    "specialtyDescRu": "Когда союзники ждут или пропускают ход, они получают дополнительные бонусы к атаке или защите.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -1128,7 +1128,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Ethric",
     "specialtyDesc": "Maximum mana increases by 10%, plus 5% more for every 5 hero levels.",
     "specialtyDescEn": "Maximum mana increases by 10%, plus 5% more for every 5 hero levels.",
-    "specialtyDescRu": "максимальная мана increases by 10%, plus 5% more for every 5 ур. героя.",
+    "specialtyDescRu": "Максимальная мана +10% и ещё +5% за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Wisdom",
@@ -1145,7 +1145,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Funerella",
     "specialtyDesc": "Universal Necromancer hero. Starts with Advanced Necromancy.",
     "specialtyDescEn": "Universal Necromancer hero. Starts with Advanced Necromancy.",
-    "specialtyDescRu": "Универсальный герой Necropolis. Начинает с продвинутой Necromancy.",
+    "specialtyDescRu": "Универсальный некромант. Начинает с продвинутой некромантии.",
     "start": [
       {
         "skill": "Necromancy",
@@ -1162,7 +1162,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Guildmaster",
     "specialtyDesc": "The hero and army gain +1 Luck, plus +1 more for every 6 hero levels.",
     "specialtyDescEn": "The hero and army gain +1 Luck, plus +1 more for every 6 hero levels.",
-    "specialtyDescRu": "Герой и армия получают +1 Luck и ещё +1 за каждые 6 ур. героя.",
+    "specialtyDescRu": "Герой и армия получают +1 к удаче и ещё +1 за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Luck",
@@ -1179,7 +1179,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Laura",
     "specialtyDesc": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "магический урон dealt increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Наносимый магический урон +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Sorcery",
@@ -1196,7 +1196,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Lord Rufus",
     "specialtyDesc": "The hero can use the Spellbook one additional time per battle round.",
     "specialtyDescEn": "The hero can use the Spellbook one additional time per battle round.",
-    "specialtyDescRu": "The hero can use the книгу заклинаний one additional time per боевой раунд.",
+    "specialtyDescRu": "Герой может использовать книгу заклинаний один дополнительный раз за боевой раунд.",
     "start": [
       {
         "skill": "Thaumaturgy",
@@ -1213,7 +1213,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Mag",
     "specialtyDesc": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Arcane Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания тайной магии, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Arcane Magic",
@@ -1231,7 +1231,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Milossa",
     "specialtyDesc": "Friendly creatures' Attack and Defense increase based on the hero's Spell Power and Knowledge.",
     "specialtyDescEn": "Friendly creatures' Attack and Defense increase based on the hero's Spell Power and Knowledge.",
-    "specialtyDescRu": "дружественные существа' Attack и Defense increase based on the hero's силу заклинаний and Knowledge.",
+    "specialtyDescRu": "Атака и защита союзников растут от силы заклинаний и знания героя.",
     "start": [
       {
         "skill": "Battle Magic",
@@ -1249,7 +1249,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Shadespinner",
     "specialtyDesc": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Nightshade Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии сумрака, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Nightshade Magic",
@@ -1284,7 +1284,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Urgo",
     "specialtyDesc": "Magic Damage taken by friendly creatures is reduced by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Magic Damage taken by friendly creatures is reduced by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "магический урон taken by дружественные существа is reduced by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Получаемый союзниками магический урон снижен на 10% и ещё на 2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Resistance",
@@ -1301,7 +1301,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Iron Master",
     "specialtyDesc": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Persuasion Power increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "силу убеждения increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Сила убеждения +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Diplomacy",
@@ -1319,7 +1319,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Jänhei",
     "specialtyDesc": "Maximum mana increases by 10%, plus 5% more for every 5 hero levels.",
     "specialtyDescEn": "Maximum mana increases by 10%, plus 5% more for every 5 hero levels.",
-    "specialtyDescRu": "максимальная мана increases by 10%, plus 5% more for every 5 ур. героя.",
+    "specialtyDescRu": "Максимальная мана +10% и ещё +5% за каждые 5 ур. героя.",
     "start": [
       {
         "skill": "Wisdom",
@@ -1338,7 +1338,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Mara Matha",
     "specialtyDesc": "Universal Schism hero. Starts with Advanced Abyssal Communion.",
     "specialtyDescEn": "Universal Schism hero. Starts with Advanced Abyssal Communion.",
-    "specialtyDescRu": "Универсальный герой Schism. Начинает с продвинутой Abyssal Communion.",
+    "specialtyDescRu": "Универсальный герой Раскола. Начинает с продвинутого бездонного общения.",
     "start": [
       {
         "skill": "Abyssal Communion",
@@ -1355,7 +1355,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Tho",
     "specialtyDesc": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Daylight Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии дневного света, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Daylight Magic",
@@ -1374,7 +1374,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Matastala",
     "specialtyDesc": "Friendly creatures gain improved Initiative from Tactics bonuses.",
     "specialtyDescEn": "Friendly creatures gain improved Initiative from Tactics bonuses.",
-    "specialtyDescRu": "дружественные существа gain improved Initiative from Tactics bonuses.",
+    "specialtyDescRu": "Союзники получают улучшенную инициативу от бонусов тактики.",
     "start": [
       {
         "skill": "Offense",
@@ -1408,7 +1408,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Walkha",
     "specialtyDesc": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
     "specialtyDescEn": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
-    "specialtyDescRu": "When дружественные существа Wait/Skip, they gain additional Attack or Defense bonuses.",
+    "specialtyDescRu": "Когда союзники ждут или пропускают ход, они получают дополнительные бонусы к атаке или защите.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -1425,7 +1425,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Dhüvri",
     "specialtyDesc": "Universal Schism hero. Starts with Advanced Abyssal Communion.",
     "specialtyDescEn": "Universal Schism hero. Starts with Advanced Abyssal Communion.",
-    "specialtyDescRu": "Универсальный герой Schism. Начинает с продвинутой Abyssal Communion.",
+    "specialtyDescRu": "Универсальный герой Раскола. Начинает с продвинутого бездонного общения.",
     "start": [
       {
         "skill": "Abyssal Communion",
@@ -1443,7 +1443,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Betrayer",
     "specialtyDesc": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Nightshade Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Nightshade Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии сумрака, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Nightshade Magic",
@@ -1460,7 +1460,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Hel'Ghat",
     "specialtyDesc": "Friendly creatures' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Friendly creatures' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "дружественные существа' Defense increases by 10% of the hero's Defense, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Защита союзников увеличивается на 10% от защиты героя и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Defence",
@@ -1477,7 +1477,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Kwinri",
     "specialtyDesc": "Friendly creatures' Attack and Defense increase based on the hero's Spell Power and Knowledge.",
     "specialtyDescEn": "Friendly creatures' Attack and Defense increase based on the hero's Spell Power and Knowledge.",
-    "specialtyDescRu": "дружественные существа' Attack и Defense increase based on the hero's силу заклинаний and Knowledge.",
+    "specialtyDescRu": "Атака и защита союзников растут от силы заклинаний и знания героя.",
     "start": [
       {
         "skill": "Battle Magic",
@@ -1494,7 +1494,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Ra'Davok",
     "specialtyDesc": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Arcane Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Arcane Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания тайной магии, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Arcane Magic",
@@ -1513,7 +1513,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Sister Keiri",
     "specialtyDesc": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
     "specialtyDescEn": "When friendly creatures wait or skip, they gain additional Attack or Defense bonuses.",
-    "specialtyDescRu": "When дружественные существа Wait/Skip, they gain additional Attack or Defense bonuses.",
+    "specialtyDescRu": "Когда союзники ждут или пропускают ход, они получают дополнительные бонусы к атаке или защите.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -1548,7 +1548,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Tōlketh",
     "specialtyDesc": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
     "specialtyDescEn": "Has +10% Movement points, plus 2.5% more for every 6 hero levels.",
-    "specialtyDescRu": "Has +10% очков передвижения, plus 2.5% more for every 6 ур. героя.",
+    "specialtyDescRu": "Имеет +10% очков передвижения и ещё +2.5% за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Logistics",
@@ -1567,7 +1567,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Ulkuth",
     "specialtyDesc": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
     "specialtyDescEn": "Magic Damage dealt increases by 10%, plus 2% more for every 4 hero levels.",
-    "specialtyDescRu": "магический урон dealt increases by 10%, plus 2% more for every 4 ур. героя.",
+    "specialtyDescRu": "Наносимый магический урон +10% и ещё +2% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Sorcery",
@@ -1637,7 +1637,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Untethered Caster",
     "specialtyDesc": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
     "specialtyDescEn": "Daylight Magic spells cast by the hero are treated as +1 level higher.",
-    "specialtyDescRu": "Заклинания Daylight Magic, которыми кастует герой, считаются на +1 уровень выше.",
+    "specialtyDescRu": "Заклинания магии дневного света, которыми кастует герой, считаются на +1 уровень выше.",
     "start": [
       {
         "skill": "Daylight Magic",
@@ -1671,7 +1671,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Nightshade Dabbler",
     "specialtyDesc": "Vulnerability reduces enemy Defense more effectively and scales with hero level.",
     "specialtyDescEn": "Vulnerability reduces enemy Defense more effectively and scales with hero level.",
-    "specialtyDescRu": "Vulnerability снижает Defense врагов эффективнее и масштабируется с уровнем героя.",
+    "specialtyDescRu": "Vulnerability эффективнее снижает защиту врагов и масштабируется с уровнем героя.",
     "start": [
       {
         "skill": "Nightshade Magic",
@@ -1706,7 +1706,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Daylight Adept",
     "specialtyDesc": "Blessing grants additional Attack and Defense scaling with hero level.",
     "specialtyDescEn": "Blessing grants additional Attack and Defense scaling with hero level.",
-    "specialtyDescRu": "Blessing даёт дополнительные Attack и Defense, растущие с уровнем героя.",
+    "specialtyDescRu": "Blessing даёт дополнительные атаку и защиту, растущие с уровнем героя.",
     "start": [
       {
         "skill": "Daylight Magic",
@@ -1723,7 +1723,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Lightweaver",
     "specialtyDesc": "Lightweaver growth in your cities increases by 1. Under her command, Lightweavers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Lightweavers lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Lightweaver growth in your cities increases by 1. Under her command, Lightweavers gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Lightweavers lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Lightweaver в городах +1/нед. Под командованием героя Lightweavers получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Lightweavers Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Lightweaver в городах +1/нед. Под командованием героя Lightweavers получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Lightweavers атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Wisdom",
@@ -1740,7 +1740,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Morale Master",
     "specialtyDesc": "All friendly creatures gain +1 Morale. The chance of an additional turn increases by 2% per Morale point, plus 1% more for every 4 hero levels.",
     "specialtyDescEn": "All friendly creatures gain +1 Morale. The chance of an additional turn increases by 2% per Morale point, plus 1% more for every 4 hero levels.",
-    "specialtyDescRu": "Все союзники получают +1 Morale. Шанс дополнительного хода +2% за пункт Morale и ещё +1% за каждые 4 ур. героя.",
+    "specialtyDescRu": "Все союзники получают +1 к морали. Шанс дополнительного хода +2% за пункт морали и ещё +1% за каждые 4 ур. героя.",
     "start": [
       {
         "skill": "Leadership",
@@ -1792,7 +1792,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Defender",
     "specialtyDesc": "Swordsman growth in your cities increases by 1. Under his command, Swordsmen gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Swordsmen lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Swordsman growth in your cities increases by 1. Under his command, Swordsmen gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Swordsmen lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Swordsman в городах +1/нед. Под командованием героя Swordsmen получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Swordsmen Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Swordsman в городах +1/нед. Под командованием героя Swordsmen получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Swordsmen атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Defence",
@@ -1809,7 +1809,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Cavalry Tactician",
     "specialtyDesc": "Cavalry growth in your cities increases by 1. Under her command, Cavalry gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Cavalry lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Cavalry growth in your cities increases by 1. Under her command, Cavalry gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Cavalry lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Cavalry в городах +1/нед. Под командованием героя Cavalry получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Cavalry Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Cavalry в городах +1/нед. Под командованием героя Cavalry получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Cavalry атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Battlecraft",
@@ -1827,7 +1827,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "Jaeger",
     "specialtyDesc": "Crossbowmen growth in your cities increases by 1. Under her command, Crossbowmen gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Crossbowmen lose an equal amount of Attack and Defence.",
     "specialtyDescEn": "Crossbowmen growth in your cities increases by 1. Under her command, Crossbowmen gain 1 Speed, 1 Initiative, and 20% HP. Their Attack and Defence increase by 1 for every 3 hero levels, and enemy Crossbowmen lose an equal amount of Attack and Defence.",
-    "specialtyDescRu": "Рост Crossbowmen в городах +1/нед. Под командованием героя Crossbowmen получают +1 Speed, +1 Initiative и +20% HP. Их Attack и Defence +1 за каждые 3 ур. героя; у вражеских Crossbowmen Attack и Defence снижаются на столько же.",
+    "specialtyDescRu": "Рост Crossbowmen в городах +1/нед. Под командованием героя Crossbowmen получают +1 к скорости, +1 к инициативе и +20% HP. Их атака и защита +1 за каждые 3 ур. героя; у вражеских Crossbowmen атака и защита снижаются на столько же.",
     "start": [
       {
         "skill": "Offense",
@@ -1862,7 +1862,7 @@ window.HOE_BUILDER_HEROES = [
     "specialty": "True Lord",
     "specialtyDesc": "Friendly creatures gain 20% of his Attack and Defense (as Attack and Defense), plus another 5% for every 6 hero levels.",
     "specialtyDescEn": "Friendly creatures gain 20% of his Attack and Defense (as Attack and Defense), plus another 5% for every 6 hero levels.",
-    "specialtyDescRu": "Союзники получают 20% Attack и Defense героя (как Attack и Defense) и ещё +5% за каждые 6 ур. героя.",
+    "specialtyDescRu": "Союзники получают 20% атаки и защиты героя (как атаку и защиту) и ещё +5% за каждые 6 ур. героя.",
     "start": [
       {
         "skill": "Righteousness",

@@ -4,7 +4,7 @@
     "subskill": "Battle March",
     "requires": "Luck",
     "effect": "Focus per attack bonus is doubled",
-    "effectRu": "Бонус Focus за атаку удваивается"
+    "effectRu": "Бонус фокуса за атаку удваивается"
   },
   {
     "skill": "Offense",
@@ -18,7 +18,7 @@
     "subskill": "One for All",
     "requires": "Tactics",
     "effect": "Attack per adjacent enemy bonus is doubled",
-    "effectRu": "Бонус Attack за соседних врагов удваивается"
+    "effectRu": "Бонус атаки за соседних врагов удваивается"
   },
   {
     "skill": "Offense",
@@ -32,7 +32,7 @@
     "subskill": "Hymn to the Martyrs",
     "requires": "Recruitment",
     "effect": "Focus when taking damage bonus is doubled",
-    "effectRu": "Бонус Focus при получении урона удваивается"
+    "effectRu": "Бонус фокуса при получении урона удваивается"
   },
   {
     "skill": "Defence",
@@ -46,21 +46,21 @@
     "subskill": "All for One",
     "requires": "Tactics",
     "effect": "Defense per adjacent ally bonus is doubled",
-    "effectRu": "Бонус Defense за соседних союзников удваивается"
+    "effectRu": "Бонус защиты за соседних союзников удваивается"
   },
   {
     "skill": "Defence",
     "subskill": "Avatar of Toughness",
     "requires": "Summon Avatar",
     "effect": "Avatar Defense scaling bonus is doubled",
-    "effectRu": "Бонус Defense аватара удваивается"
+    "effectRu": "Бонус защиты аватара удваивается"
   },
   {
     "skill": "Battlecraft",
     "subskill": "Resolve",
     "requires": "Leadership",
     "effect": "Extra turn chance per Morale bonus is doubled",
-    "effectRu": "Бонус шанса доп. хода за Morale удваивается"
+    "effectRu": "Бонус шанса доп. хода за мораль удваивается"
   },
   {
     "skill": "Battlecraft",
@@ -74,21 +74,21 @@
     "subskill": "Battle Focus",
     "requires": "Battle Magic",
     "effect": "+1 Focus Charge at round start is doubled",
-    "effectRu": "+1 Focus Charge в начале раунда удваивается"
+    "effectRu": "+1 заряд фокуса в начале раунда удваивается"
   },
   {
     "skill": "Battlecraft",
     "subskill": "Manacraft",
     "requires": "Recruitment",
     "effect": "Max mana from Attack/Defense bonus is doubled",
-    "effectRu": "Бонус макс. маны от Attack/Defense удваивается"
+    "effectRu": "Бонус макс. маны от атаки/защиты удваивается"
   },
   {
     "skill": "Leadership",
     "subskill": "Avatar of Fury",
     "requires": "Summon Avatar",
     "effect": "Avatar Attack scaling bonus is doubled",
-    "effectRu": "Бонус Attack аватара удваивается"
+    "effectRu": "Бонус атаки аватара удваивается"
   },
   {
     "skill": "Leadership",
@@ -109,7 +109,7 @@
     "subskill": "Battle March",
     "requires": "Offense",
     "effect": "Focus per attack bonus is doubled",
-    "effectRu": "Бонус Focus за атаку удваивается"
+    "effectRu": "Бонус фокуса за атаку удваивается"
   },
   {
     "skill": "Luck",
@@ -123,7 +123,7 @@
     "subskill": "Beastly Confidence",
     "requires": "Primal Magic",
     "effect": "Lucky Strike chance per Luck bonus is doubled",
-    "effectRu": "Бонус шанса Lucky Strike за Luck удваивается"
+    "effectRu": "Бонус шанса удачного удара за удачу удваивается"
   },
   {
     "skill": "Luck",
@@ -137,35 +137,35 @@
     "subskill": "Chronic Weakness",
     "requires": "Nightshade Magic",
     "effect": "Chronic Weakness effect is doubled",
-    "effectRu": "Эффект Chronic Weakness удваивается"
+    "effectRu": "Эффект хронической слабости удваивается"
   },
   {
     "skill": "Resistance",
     "subskill": "Mage Protector's Authority",
     "requires": "Battle Magic",
     "effect": "Defense from Knowledge bonus is doubled",
-    "effectRu": "Бонус Defense от Knowledge удваивается"
+    "effectRu": "Бонус защиты от знания удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "One for All",
     "requires": "Offense",
     "effect": "Attack per adjacent enemy bonus is doubled",
-    "effectRu": "Бонус Attack за соседних врагов удваивается"
+    "effectRu": "Бонус атаки за соседних врагов удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "All for One",
     "requires": "Defence",
     "effect": "Defense per adjacent ally bonus is doubled",
-    "effectRu": "Бонус Defense за соседних союзников удваивается"
+    "effectRu": "Бонус защиты за соседних союзников удваивается"
   },
   {
     "skill": "Tactics",
     "subskill": "Elite Guards",
     "requires": "Recruitment",
     "effect": "T1–T3 Attack/Defense bonus is doubled",
-    "effectRu": "Бонус Attack/Defense T1–T3 удваивается"
+    "effectRu": "Бонус атаки/защиты T1–T3 удваивается"
   },
   {
     "skill": "Tactics",
@@ -179,21 +179,21 @@
     "subskill": "Manacraft",
     "requires": "Battlecraft",
     "effect": "Max mana from Attack/Defense bonus is doubled",
-    "effectRu": "Бонус макс. маны от Attack/Defense удваивается"
+    "effectRu": "Бонус макс. маны от атаки/защиты удваивается"
   },
   {
     "skill": "Recruitment",
     "subskill": "Hymn to the Martyrs",
     "requires": "Defence",
     "effect": "Focus when taking damage bonus is doubled",
-    "effectRu": "Бонус Focus при получении урона удваивается"
+    "effectRu": "Бонус фокуса при получении урона удваивается"
   },
   {
     "skill": "Recruitment",
     "subskill": "Elite Guards",
     "requires": "Tactics",
     "effect": "T1–T3 Attack/Defense bonus is doubled",
-    "effectRu": "Бонус Attack/Defense T1–T3 удваивается"
+    "effectRu": "Бонус атаки/защиты T1–T3 удваивается"
   },
   {
     "skill": "Recruitment",
@@ -228,7 +228,7 @@
     "subskill": "Stargazer",
     "requires": "Scouting",
     "effect": "+250 Astrology Points/day is doubled",
-    "effectRu": "Бонус +250 Astrology Points/день удваивается"
+    "effectRu": "Бонус +250 очков астрологии/день удваивается"
   },
   {
     "skill": "Wisdom",
@@ -242,28 +242,28 @@
     "subskill": "Battle Focus",
     "requires": "Battlecraft",
     "effect": "+1 Focus Charge at round start is doubled",
-    "effectRu": "+1 Focus Charge в начале раунда удваивается"
+    "effectRu": "+1 заряд фокуса в начале раунда удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Chaos Reigns",
     "requires": "Primal Magic",
     "effect": "Chaos Reigns effect is doubled",
-    "effectRu": "Эффект Chaos Reigns удваивается"
+    "effectRu": "Эффект царства хаоса удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Battle Mage's Authority",
     "requires": "Sorcery",
     "effect": "Attack +20% from Spell Power is doubled",
-    "effectRu": "Бонус Attack +20% от Spell Power удваивается"
+    "effectRu": "Бонус атаки +20% от силы заклинаний удваивается"
   },
   {
     "skill": "Battle Magic",
     "subskill": "Mage Protector's Authority",
     "requires": "Resistance",
     "effect": "Defense +20% from Knowledge is doubled",
-    "effectRu": "Бонус Defense +20% от Knowledge удваивается"
+    "effectRu": "Бонус защиты +20% от знания удваивается"
   },
   {
     "skill": "Sorcery",
@@ -277,7 +277,7 @@
     "subskill": "Battle Mage's Authority",
     "requires": "Battle Magic",
     "effect": "Attack +20% from Spell Power is doubled",
-    "effectRu": "Бонус Attack +20% от Spell Power удваивается"
+    "effectRu": "Бонус атаки +20% от силы заклинаний удваивается"
   },
   {
     "skill": "Sorcery",
@@ -298,28 +298,28 @@
     "subskill": "Avatar of Fury",
     "requires": "Leadership",
     "effect": "Avatar Attack scaling bonus is doubled",
-    "effectRu": "Бонус Attack аватара удваивается"
+    "effectRu": "Бонус атаки аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "Avatar of Toughness",
     "requires": "Defence",
     "effect": "Avatar Defense scaling bonus is doubled",
-    "effectRu": "Бонус Defense аватара удваивается"
+    "effectRu": "Бонус защиты аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "Avatar of Celerity",
     "requires": "Insight",
     "effect": "Avatar Speed/Initiative +2 is doubled",
-    "effectRu": "Бонус Speed/Initiative аватара удваивается"
+    "effectRu": "Бонус скорости/инициативы аватара удваивается"
   },
   {
     "skill": "Summon Avatar",
     "subskill": "All Life is Endless",
     "requires": "Arcane Magic",
     "effect": "Summon Avatar synergy effect is doubled",
-    "effectRu": "Синергия Summon Avatar удваивается"
+    "effectRu": "Синергия призыва аватара удваивается"
   },
   {
     "skill": "Daylight Magic",
@@ -354,7 +354,7 @@
     "subskill": "Chronic Weakness",
     "requires": "Resistance",
     "effect": "Chronic Weakness effect is doubled",
-    "effectRu": "Эффект Chronic Weakness удваивается"
+    "effectRu": "Эффект хронической слабости удваивается"
   },
   {
     "skill": "Nightshade Magic",
@@ -375,7 +375,7 @@
     "subskill": "All Life is Endless",
     "requires": "Summon Avatar",
     "effect": "Summon Avatar synergy effect is doubled",
-    "effectRu": "Синергия Summon Avatar удваивается"
+    "effectRu": "Синергия призыва аватара удваивается"
   },
   {
     "skill": "Arcane Magic",
@@ -389,14 +389,14 @@
     "subskill": "Beastly Confidence",
     "requires": "Luck",
     "effect": "Lucky Strike chance per Luck bonus is doubled",
-    "effectRu": "Бонус шанса Lucky Strike за Luck удваивается"
+    "effectRu": "Бонус шанса удачного удара за удачу удваивается"
   },
   {
     "skill": "Primal Magic",
     "subskill": "Chaos Reigns",
     "requires": "Battle Magic",
     "effect": "Chaos Reigns effect is doubled",
-    "effectRu": "Эффект Chaos Reigns удваивается"
+    "effectRu": "Эффект царства хаоса удваивается"
   },
   {
     "skill": "Primal Magic",
@@ -459,7 +459,7 @@
     "subskill": "Stargazer",
     "requires": "Wisdom",
     "effect": "+250 Astrology Points/day is doubled",
-    "effectRu": "Бонус +250 Astrology Points/день удваивается"
+    "effectRu": "Бонус +250 очков астрологии/день удваивается"
   },
   {
     "skill": "Diplomacy",
@@ -515,14 +515,14 @@
     "subskill": "Experimenter",
     "requires": "Insight",
     "effect": "+5 Alchemical Dust bonus is doubled",
-    "effectRu": "Бонус +5 Alchemical Dust удваивается"
+    "effectRu": "Бонус +5 алхимической пыли удваивается"
   },
   {
     "skill": "Insight",
     "subskill": "Avatar of Celerity",
     "requires": "Summon Avatar",
     "effect": "Avatar Speed/Initiative +2 is doubled",
-    "effectRu": "Бонус Speed/Initiative аватара удваивается"
+    "effectRu": "Бонус скорости/инициативы аватара удваивается"
   },
   {
     "skill": "Insight",
@@ -536,7 +536,7 @@
     "subskill": "Experimenter",
     "requires": "Economy",
     "effect": "+5 Alchemical Dust bonus is doubled",
-    "effectRu": "Бонус +5 Alchemical Dust удваивается"
+    "effectRu": "Бонус +5 алхимической пыли удваивается"
   },
   {
     "skill": "Insight",
