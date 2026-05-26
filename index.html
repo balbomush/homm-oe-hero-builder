@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HoMM Olden Era — Hero Builder</title>
+  <script src="hero-builder-i18n.js"></script>
+  <script src="hero-builder-synergies.js"></script>
+  <script src="hero-builder-heroes.js"></script>
+  <script src="hero-builder-data.js"></script>
+  <style>
+    :root {
+      --bg: #0f1218;
+      --panel: #1a2030;
+      --panel2: #232b3d;
+      --border: #3a4660;
+      --text: #e8ecf4;
+      --muted: #9aa8c4;
+      --gold: #d4af37;
+      --might: #c45c5c;
+      --magic: #5c8fd4;
+      --general: #6aab6a;
+      --faction: #b8860b;
+      --ok: #4caf7a;
+      --warn: #e6a23c;
+      --bad: #e05555;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: radial-gradient(circle at top, #1b2438 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0,0,0,.25);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    header h1 { margin: 0; font-size: 1.35rem; color: var(--gold); }
+    header p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+    button, select, input[type="text"] {
+      background: var(--panel2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: .9rem;
+    }
+    button { cursor: pointer; }
+    button:hover { border-color: var(--gold); }
+    button.primary { background: #3a2f10; border-color: var(--gold); color: var(--gold); }
+    main {
+      display: grid;
+      grid-template-columns: 280px 1fr 360px;
+      gap: 16px;
+      padding: 16px;
+      max-width: 1680px;
+      margin: 0 auto;
+    }
+    .side-panels { display: flex; flex-direction: column; gap: 16px; }
+    @media (max-width: 1200px) {
+      main { grid-template-columns: 1fr; }
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .panel h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      color: var(--gold);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    label { display: block; font-size: .8rem; color: var(--muted); margin: 10px 0 4px; }
+    select { width: 100%; }
+    .hero-card {
+      margin-top: 12px;
+      padding: 10px;
+      background: var(--panel2);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+    .hero-card .spec-title { font-weight: 600; color: var(--gold); }
+    .hero-card .spec-desc { font-size: .85rem; color: var(--muted); margin-top: 4px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag {
+      font-size: .75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .tag.might { border-color: var(--might); color: #ffb4b4; }
+    .tag.magic { border-color: var(--magic); color: #b4d4ff; }
+
+    .wheel-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .wheel {
+      position: relative;
+      width: min(520px, 90vw);
+      height: min(520px, 90vw);
+    }
+    .wheel-center {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: var(--panel2);
+      border: 2px solid var(--faction);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      z-index: 2;
+    }
+    .wheel-center .label { font-size: .65rem; color: var(--muted); }
+    .wheel-center .name { font-size: .75rem; font-weight: 600; color: var(--gold); line-height: 1.2; }
+    .slot {
+      position: absolute;
+      width: 118px;
+      min-height: 92px;
+      padding: 8px;
+      background: var(--panel2);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: .15s;
+    }
+    .slot:hover { border-color: var(--gold); transform: scale(1.03); }
+    .slot.active { border-color: var(--gold); box-shadow: 0 0 12px rgba(212,175,55,.25); }
+    .slot.empty { border-style: dashed; opacity: .75; }
+    .slot .skill-name { font-size: .78rem; font-weight: 600; line-height: 1.2; }
+    .slot .tier { font-size: .7rem; color: var(--gold); margin-top: 2px; }
+    .slot .subs { font-size: .65rem; color: var(--muted); margin-top: 4px; line-height: 1.25; }
+    .slot.cat-might { border-left: 3px solid var(--might); }
+    .slot.cat-magic { border-left: 3px solid var(--magic); }
+    .slot.cat-general { border-left: 3px solid var(--general); }
+    .slot.cat-faction { border-left: 3px solid var(--faction); }
+    .slot.required { box-shadow: inset 0 0 0 1px var(--ok); }
+    .slot.blocked { opacity: .45; pointer-events: none; }
+
+    .legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: .75rem; color: var(--muted); }
+    .legend span::before {
+      content: "";
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 2px;
+      margin-right: 4px;
+      vertical-align: middle;
+    }
+    .legend .lm::before { background: var(--might); }
+    .legend .lg::before { background: var(--magic); }
+    .legend .ln::before { background: var(--general); }
+    .legend .lf::before { background: var(--faction); }
+
+    .subclass-list { display: flex; flex-direction: column; gap: 8px; }
+    .subclass-item {
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--panel2);
+    }
+    .subclass-item.selected { border-color: var(--gold); background: #2a2410; }
+    .subclass-item .title { font-weight: 600; font-size: .9rem; }
+    .subclass-item .bonus { font-size: .8rem; color: var(--muted); margin-top: 2px; }
+    .progress { margin-top: 12px; }
+    .progress-bar {
+      height: 8px;
+      background: #111;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 6px;
+    }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--ok), var(--gold)); width: 0; transition: .2s; }
+    .req-list { margin-top: 10px; }
+    .req {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .req.done { color: var(--ok); }
+    .req.pending { color: var(--warn); }
+    .req.missing { color: var(--bad); }
+    .alert {
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: .82rem;
+      background: rgba(224,85,85,.12);
+      border: 1px solid rgba(224,85,85,.35);
+      color: #ffb4b4;
+    }
+    .alert.ok {
+      background: rgba(76,175,122,.12);
+      border-color: rgba(76,175,122,.35);
+      color: #b8f0d0;
+    }
+    .alert.warn {
+      background: rgba(230,162,60,.12);
+      border-color: rgba(230,162,60,.35);
+      color: #ffd89a;
+    }
+
+    .editor {
+      margin-top: 12px;
+      padding: 12px;
+      background: var(--panel2);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .editor h3 { margin: 0 0 10px; font-size: .95rem; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+    .row select { flex: 1; min-width: 140px; }
+    .sub-picks { display: grid; gap: 8px; margin-top: 8px; }
+    .sub-picks label { margin: 0; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: .82rem;
+      margin-top: 8px;
+    }
+    .stats-grid div { background: rgba(0,0,0,.2); padding: 6px 8px; border-radius: 4px; }
+    footer {
+      text-align: center;
+      padding: 16px;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    footer a { color: var(--gold); }
+    .lang-select { min-width: 110px; }
+    .synergy-list, .level-rows { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; }
+    .synergy-item {
+      font-size: .78rem;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.15);
+    }
+    .synergy-item.active { border-color: var(--ok); color: #b8f0d0; }
+    .synergy-item.potential { border-color: var(--warn); color: #ffd89a; opacity: .85; }
+    .level-row {
+      display: grid;
+      grid-template-columns: 36px 1fr 1fr 1fr;
+      gap: 4px;
+      align-items: center;
+      font-size: .75rem;
+    }
+    .level-row select { padding: 4px 6px; font-size: .72rem; }
+    .level-row .lvl { color: var(--gold); font-weight: 600; text-align: center; }
+    .panel-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .panel-tools button { padding: 6px 10px; font-size: .78rem; }
+    .hint { font-size: .75rem; color: var(--muted); margin: 0 0 8px; line-height: 1.35; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1 id="hdrTitle">HoMM Olden Era — Hero Builder</h1>
+      <p id="hdrSubtitle"></p>
+    </div>
+    <div class="toolbar">
+      <select id="selLang" class="lang-select" title="Language">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+      <button id="btnReset"></button>
+      <button id="btnExport"></button>
+      <button id="btnImport"></button>
+      <input type="file" id="fileImport" accept=".json" hidden>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2 id="lblHero"></h2>
+      <label id="lblFaction"></label>
+      <select id="selFaction"></select>
+      <label id="lblClass"></label>
+      <select id="selClass"></select>
+      <label id="lblHeroSelect"></label>
+      <select id="selHero"></select>
+      <div id="heroCard" class="hero-card"></div>
+      <div class="stats-grid" id="heroStats"></div>
+    </section>
+
+    <section class="panel wheel-wrap">
+      <h2 id="lblWheel" style="width:100%; margin:0 0 4px;"></h2>
+      <div class="legend">
+        <span class="lm" id="legMight"></span>
+        <span class="lg" id="legMagic"></span>
+        <span class="ln" id="legGeneral"></span>
+        <span class="lf" id="legFaction"></span>
+      </div>
+      <div class="wheel" id="wheel"></div>
+      <div class="editor" id="skillEditor" hidden>
+        <h3 id="editorTitle"></h3>
+        <div class="row">
+          <label id="lblTier" style="margin:0"></label>
+          <select id="selTier"></select>
+          <button id="btnRemoveSkill"></button>
+        </div>
+        <div class="sub-picks" id="subPicks"></div>
+      </div>
+    </section>
+
+    <div class="side-panels">
+      <section class="panel">
+        <h2 id="lblSubclass"></h2>
+        <div class="subclass-list" id="subclassList"></div>
+        <div class="progress">
+          <div id="subProgressText"></div>
+          <div class="progress-bar"><div class="progress-fill" id="subProgressBar"></div></div>
+        </div>
+        <div class="req-list" id="reqList"></div>
+        <div id="buildAlerts"></div>
+      </section>
+
+      <section class="panel">
+        <h2 id="lblSynergies"></h2>
+        <div class="synergy-list" id="synergyList"></div>
+      </section>
+
+      <section class="panel">
+        <h2 id="lblLevelPlan"></h2>
+        <p class="hint" id="levelPlanHint"></p>
+        <div class="panel-tools">
+          <label id="lblTargetLevel" style="margin:0"></label>
+          <select id="selTargetLevel"></select>
+          <button id="btnGenOffers"></button>
+          <button id="btnApplyPlan"></button>
+          <button id="btnClearPlan"></button>
+        </div>
+        <div id="levelPlanStatus"></div>
+        <div class="level-rows" id="levelRows"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="footerText"></footer>
+
+<script src="hero-builder-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Temporary wiki scrape attempts
+tmp_*.html
+wiki_skills_extract.txt
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Duplicate JSON exports (canonical copy is homm_oe_heroes_export.json)
+heroes_array.json
+heroes_data.json
