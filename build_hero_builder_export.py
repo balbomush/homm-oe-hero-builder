@@ -377,7 +377,8 @@ def transform_hero(raw: dict, overrides: dict, ru_overrides: dict) -> dict:
 
 def main() -> None:
     data = json.loads((ROOT / "heroes_data.json").read_text(encoding="utf-8"))
-    overrides = json.loads((ROOT / "specialty_en_overrides.json").read_text(encoding="utf-8"))
+    en_path = ROOT / "specialty_en_overrides.json"
+    overrides = json.loads(en_path.read_text(encoding="utf-8")) if en_path.exists() else {}
     ru_path = ROOT / "specialty_ru_overrides.json"
     ru_overrides = json.loads(ru_path.read_text(encoding="utf-8")) if ru_path.exists() else {}
 
