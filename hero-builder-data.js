@@ -31,7 +31,7 @@ window.HOE_BUILDER_DATA = {
     "Battle Magic": { cat: "magic", magic: true, adv: ["Aura of Destruction", "Aura of Protection", "Aura of Wizardry"], exp: ["Battle Mage's Authority", "Mage Protector's Authority", "Magic Time"] },
     Sorcery: { cat: "magic", magic: true, adv: ["Magical Influence", "Magic Arrow", "Raw Energy"], exp: ["Piercing Spells", "High Mage", "Sticky Magic"] },
     Thaumaturgy: { cat: "magic", magic: true, might: false, adv: ["Antimage", "Ancient Scrolls", "Practical Incantations"], exp: ["Thaumaturge Brilliance", "Vast Soul", "Archmage"] },
-    "Summon Avatar": { cat: "magic", magic: true, adv: ["Avatar of Fury", "Avatar of Toughness", "Avatar of Celerity"], exp: ["Reality Wardens", "Legion From Legion", "Stabilization"] },
+    "Summon Avatar": { cat: "magic", magic: true, adv: ["Avatar of Fury", "Avatar of Toughness", "Avatar of Celerity"], exp: ["Stabilization", "Their Name is Legion", "Fields of Mana"] },
     "Daylight Magic": { cat: "magic", magic: true, adv: ["Daylight Time", "Luminous Focus", "Brightest Sun"], exp: ["Daylight Teachings", "Speed of Light", "Scholar Synergy: Arina"] },
     "Nightshade Magic": { cat: "magic", magic: true, adv: ["Nightshade Time", "Chronic Weakness", "Darkest Night"], exp: ["Nightshade Teachings", "Hour of the Wolf", "Scholar Synergy: Naira"] },
     "Arcane Magic": { cat: "magic", magic: true, adv: ["Arcane Time", "All Life is Endless", "Purest Thought"], exp: ["Arcane Teachings", "Mana Flex", "Scholar Synergy: Doreath"] },
@@ -172,7 +172,3 @@ window.HOE_BUILDER_DATA = {
   },
 
 };
-
-if (window.HOE_BUILDER_HEROES) {
-  window.HOE_BUILDER_DATA.heroes = window.HOE_BUILDER_HEROES;
-}

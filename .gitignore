@@ -21,3 +21,6 @@ heroes_data.json
 
 # Local autotests (run before push, not published)
 tests/
+
+# Official wiki HTML exports (local source of truth, read-only)
+rared html/

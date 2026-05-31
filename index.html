@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HoMM Olden Era — Hero Builder</title>
+  <title>HoMM Olden Era — Hero Configurator</title>
   <script src="hero-builder-i18n.js"></script>
   <script src="hero-builder-synergies.js"></script>
-  <script src="hero-builder-heroes.js"></script>
   <script src="hero-builder-data.js"></script>
   <script src="hero-builder-display-locale.js"></script>
   <style>
@@ -132,9 +131,11 @@
       text-align: center;
       padding: 8px;
       z-index: 2;
+      cursor: pointer;
     }
     .wheel-center .label { font-size: .65rem; color: var(--muted); }
     .wheel-center .name { font-size: .75rem; font-weight: 600; color: var(--gold); line-height: 1.2; }
+    .wheel-center.active { border-color: var(--gold); box-shadow: 0 0 12px rgba(212,175,55,.25); cursor: pointer; }
     .slot {
       position: absolute;
       width: 118px;
@@ -315,20 +316,19 @@
       <button id="btnReset"></button>
       <button id="btnExport"></button>
       <button id="btnImport"></button>
+      <button id="btnShare"></button>
       <input type="file" id="fileImport" accept=".json" hidden>
     </div>
   </header>
 
   <main>
     <section class="panel">
-      <h2 id="lblHero"></h2>
+      <h2 id="lblConfig"></h2>
       <label id="lblFaction"></label>
       <select id="selFaction"></select>
-      <label id="lblClass"></label>
-      <select id="selClass"></select>
-      <label id="lblHeroSelect"></label>
-      <select id="selHero"></select>
-      <div id="heroCard" class="hero-card"></div>
+      <label id="lblClassType"></label>
+      <select id="selClassType"></select>
+      <div id="configCard" class="hero-card"></div>
       <div class="stats-grid" id="heroStats"></div>
     </section>
 

@@ -3,15 +3,14 @@ const SYN = window.HOE_BUILDER_SYNERGIES || [];
 const I18N = window.HOE_BUILDER_I18N;
 const DISP = window.HOE_BUILDER_DISPLAY;
 const CORE = window.HOE_BUILDER_CORE;
-const TIERS = ["", "Basic", "Advanced", "Expert"];
 const SLOT_COUNT = CORE.SLOT_COUNT;
 let lang = localStorage.getItem("hoe_builder_lang") || "ru";
 let state = {
   faction: "Temple",
-  heroId: null,
+  classType: "Might",
   selectedSlot: null,
   targetSubclass: null,
-  slots: Array(SLOT_COUNT).fill(null)
+  slots: CORE.buildConfiguratorSlots(DATA, "Temple")
 };
 
 function t(key, vars) {
@@ -41,24 +40,12 @@ function localizeGameText(text) {
   return out;
 }
 
-function heroDesc(hero) {
-  if (!hero) return "";
-  const raw = lang === "ru"
-    ? (hero.specialtyDescRu || hero.specialtyDescEn || "")
-    : (hero.specialtyDescEn || hero.specialtyDescRu || "");
-  return localizeGameText(raw);
-}
-
 function subclassBonus(data) {
   return lang === "ru" ? (data.bonusRu || data.bonus || data.bonusEn) : (data.bonusEn || data.bonus || data.bonusRu);
 }
 
 function factionLabel(f) {
   return (I18N[lang].factions && I18N[lang].factions[f]) || f;
-}
-
-function classLabel(className) {
-  return (I18N[lang].classes && I18N[lang].classes[className]) || className;
 }
 
 function skillLabel(skillName) {
@@ -83,32 +70,40 @@ function classTypeLabel(type) {
   return type || "";
 }
 
-function startTierLabel(tierStr) {
-  if (tierStr === "Basic") return t("tierBasic");
-  if (tierStr === "Advanced") return t("tierAdvanced");
-  if (tierStr === "Expert") return t("tierExpert");
-  return tierStr;
-}
-
 function normSkill(name) {
   return CORE.normSkill(DATA, name);
 }
 
-function getHero() {
-  return DATA.heroes.find(h => h.id === state.heroId);
-}
-
-function getClassInfo() {
-  const hero = getHero();
-  return hero ? DATA.classes[hero.class] : null;
+function getClassTemplate() {
+  return CORE.findClassTemplate(DATA, state.faction, state.classType);
 }
 
 function isSkillAllowed(skillName) {
-  return CORE.isSkillAllowed(DATA, getClassInfo(), skillName);
+  return CORE.isSkillAllowed(DATA, getClassTemplate(), skillName);
 }
 
 function factionSkillName() {
   return CORE.factionSkillName(DATA, state.faction);
+}
+
+function availableClassTypes() {
+  const types = new Set();
+  Object.values(DATA.classes).forEach((c) => {
+    if (c.faction === state.faction) types.add(c.type);
+  });
+  return [...types];
+}
+
+function resetBuild() {
+  state.slots = CORE.buildConfiguratorSlots(DATA, state.faction);
+  state.selectedSlot = null;
+  state.targetSubclass = null;
+}
+
+function initFromConfig() {
+  resetBuild();
+  renderAll();
+  syncUrl();
 }
 
 function applyStaticI18n() {
@@ -116,10 +111,9 @@ function applyStaticI18n() {
   document.title = t("title");
   document.getElementById("hdrTitle").textContent = t("title");
   document.getElementById("hdrSubtitle").textContent = t("subtitle");
-  document.getElementById("lblHero").textContent = t("hero");
+  document.getElementById("lblConfig").textContent = t("config");
   document.getElementById("lblFaction").textContent = t("faction");
-  document.getElementById("lblClass").textContent = t("class");
-  document.getElementById("lblHeroSelect").textContent = t("heroSelect");
+  document.getElementById("lblClassType").textContent = t("classType");
   document.getElementById("lblWheel").textContent = t("skillWheel");
   document.getElementById("legMight").textContent = t("might");
   document.getElementById("legMagic").textContent = t("magic");
@@ -133,25 +127,13 @@ function applyStaticI18n() {
   document.getElementById("btnReset").textContent = t("reset");
   document.getElementById("btnExport").textContent = t("exportJson");
   document.getElementById("btnImport").textContent = t("importJson");
+  document.getElementById("btnShare").textContent = t("shareLink");
   document.getElementById("btnRemoveSkill").textContent = t("remove");
   document.getElementById("lblTier").textContent = t("tierHdr");
   document.getElementById("footerText").innerHTML =
     t("footerData") + ' <a href="https://wiki.hoodedhorse.com/Heroes_of_Might_and_Magic_Olden_Era/Skills" target="_blank">' + t("footerWiki") + "</a> · " +
     '<a href="HoMM_Olden_Era_Skills.md">' + t("footerGuide") + "</a>";
   document.getElementById("selLang").value = lang;
-}
-
-function initHeroFromSelection() {
-  const hero = getHero();
-  if (!hero) return;
-  state.faction = hero.faction;
-  state.slots = CORE.buildInitialSlots(DATA, hero);
-  if (hero.subclassHint) {
-    const subs = DATA.classes[hero.class]?.subclasses || {};
-    if (subs[hero.subclassHint]) state.targetSubclass = hero.subclassHint;
-  }
-  state.selectedSlot = null;
-  renderAll();
 }
 
 function populateSelects() {
@@ -161,54 +143,45 @@ function populateSelects() {
   selF.value = state.faction;
   selF.onchange = () => {
     state.faction = selF.value;
-    updateClassHeroSelects();
-    const first = DATA.heroes.find(h => h.faction === state.faction);
-    if (first) { state.heroId = first.id; initHeroFromSelection(); }
+    const types = availableClassTypes();
+    if (!types.includes(state.classType)) state.classType = types[0] || "Might";
+    populateClassTypeSelect();
+    initFromConfig();
   };
-  updateClassHeroSelects();
+  populateClassTypeSelect();
 }
 
-function updateClassHeroSelects() {
-  const heroes = DATA.heroes.filter(h => h.faction === state.faction);
-  const classes = [...new Set(heroes.map(h => h.class))];
-  const selC = document.getElementById("selClass");
-  selC.innerHTML = classes.map(c => `<option value="${c}">${classLabel(c)}</option>`).join("");
-  selC.onchange = updateHeroSelect;
-  updateHeroSelect();
+function populateClassTypeSelect() {
+  const selT = document.getElementById("selClassType");
+  const types = availableClassTypes();
+  selT.innerHTML = types.map(tp =>
+    `<option value="${tp}">${classTypeLabel(tp)}</option>`).join("");
+  if (!types.includes(state.classType)) state.classType = types[0] || "Might";
+  selT.value = state.classType;
+  selT.onchange = () => {
+    state.classType = selT.value;
+    state.targetSubclass = null;
+    initFromConfig();
+  };
 }
 
-function updateHeroSelect() {
-  const cls = document.getElementById("selClass").value;
-  const heroes = DATA.heroes.filter(h => h.faction === state.faction && h.class === cls);
-  const selH = document.getElementById("selHero");
-  selH.innerHTML = heroes.map(h => `<option value="${h.id}">${h.name}</option>`).join("");
-  if (!heroes.find(h => h.id === state.heroId)) state.heroId = heroes[0]?.id;
-  selH.value = state.heroId;
-  selH.onchange = () => { state.heroId = selH.value; initHeroFromSelection(); };
-  initHeroFromSelection();
-}
-
-function renderHeroCard() {
-  const hero = getHero();
-  const card = document.getElementById("heroCard");
+function renderConfigPanel() {
+  const card = document.getElementById("configCard");
   const stats = document.getElementById("heroStats");
-  if (!hero) { card.innerHTML = ""; stats.innerHTML = ""; return; }
-  const cls = DATA.classes[hero.class];
+  const fSkill = factionSkillName();
   card.innerHTML = `
-    <div class="spec-title">${hero.specialty}</div>
-    <div class="spec-desc">${heroDesc(hero)}</div>
+    <div class="spec-title">${t("abstractHero")}</div>
+    <div class="spec-desc">${t("abstractHeroDesc")}</div>
     <div class="tags">
-      <span class="tag ${cls?.type === "Might" ? "might" : "magic"}">${classTypeLabel(cls?.type)}</span>
-      <span class="tag">${classLabel(hero.class)}</span>
-      ${hero.universal ? `<span class="tag">${t("universal")}</span>` : ""}
-      ${hero.subclassHint ? `<span class="tag">→ ${subclassLabel(hero.subclassHint)}</span>` : ""}
+      <span class="tag ${state.classType === "Might" ? "might" : "magic"}">${classTypeLabel(state.classType)}</span>
+      <span class="tag">${factionLabel(state.faction)}</span>
+      <span class="tag">${skillLabel(fSkill)}</span>
     </div>
   `;
-  const startTxt = (hero.start || []).map(s => `${startTierLabel(s.tier)} ${skillLabel(s.skill)}`).join(", ") || "—";
   stats.innerHTML = `
-    <div><b>${t("faction")}:</b> ${factionLabel(hero.faction)}</div>
-    <div><b>${t("startingSkills")}:</b> ${startTxt}</div>
-    <div><b>${t("spell")}:</b> ${hero.spell || "—"}</div>
+    <div><b>${t("faction")}:</b> ${factionLabel(state.faction)}</div>
+    <div><b>${t("classType")}:</b> ${classTypeLabel(state.classType)}</div>
+    <div><b>${t("factionSkill")}:</b> ${skillLabel(fSkill)} (${t("tierBasic")})</div>
     <div><b>${t("slotsUsed")}:</b> ${usedSlots()}/8</div>
   `;
 }
@@ -227,15 +200,18 @@ function renderWheel() {
 
   const center = document.createElement("div");
   center.className = "wheel-center";
+  center.style.borderColor = DATA.factions[state.faction]?.color || undefined;
   center.innerHTML = `
     <div class="label">${t("factionCenter")}</div>
     <div class="name">${skillLabel(factionSkillName())}</div>
     <div class="tier">${state.slots[0] ? tierLabel(state.slots[0].tier) : t("tierBasic")}</div>
   `;
+  center.onclick = () => selectSlot(0);
+  if (state.selectedSlot === 0) center.classList.add("active");
   wheel.appendChild(center);
 
-  for (let i = 0; i < SLOT_COUNT; i++) {
-    const angle = (-90 + i * (360 / SLOT_COUNT)) * Math.PI / 180;
+  for (let i = 1; i < SLOT_COUNT; i++) {
+    const angle = (-90 + (i - 1) * (360 / (SLOT_COUNT - 1))) * Math.PI / 180;
     const x = cx + R * Math.cos(angle) - 59;
     const y = cy + R * Math.sin(angle) - 46;
     const slot = state.slots[i];
@@ -245,7 +221,7 @@ function renderWheel() {
     el.style.top = y + "px";
     if (!slot) {
       el.classList.add("empty");
-      el.innerHTML = `<div class="skill-name">${t("slot")} ${i + 1}</div><div class="tier">${t("addSkillSlot")}</div>`;
+      el.innerHTML = `<div class="skill-name">${t("slot")} ${i}</div><div class="tier">${t("addSkillSlot")}</div>`;
     } else {
       const sk = DATA.skills[slot.skill];
       el.classList.add("cat-" + (sk?.cat || "general"));
@@ -277,7 +253,7 @@ function renderEditor() {
   if (i === null) { ed.hidden = true; return; }
   ed.hidden = false;
   const slot = state.slots[i];
-  document.getElementById("editorTitle").textContent = slot ? skillLabel(slot.skill) : `${t("slot")} ${i + 1}`;
+  document.getElementById("editorTitle").textContent = slot ? skillLabel(slot.skill) : `${t("slot")} ${i}`;
 
   const selTier = document.getElementById("selTier");
   if (!slot) {
@@ -287,7 +263,7 @@ function renderEditor() {
     document.getElementById("btnRemoveSkill").onclick = null;
     return;
   }
-  selTier.disabled = slot.locked;
+  selTier.disabled = false;
   selTier.innerHTML = [1, 2, 3].map(tier =>
     `<option value="${tier}" ${slot.tier === tier ? "selected" : ""}>${tierLabel(tier)}</option>`).join("");
   selTier.onchange = () => {
@@ -312,9 +288,9 @@ function renderSkillPicker(slotIndex) {
     .filter(name => !DATA.skills[name].faction)
     .filter(name => isSkillAllowed(name))
     .filter(name => !used.has(name))
-    .sort();
+    .sort((a, b) => skillLabel(a).localeCompare(skillLabel(b), lang));
   subPicks.innerHTML = `
-    <label>${t("addSkill")} ${slotIndex + 1}</label>
+    <label>${t("addSkill")} ${slotIndex}</label>
     <select id="pickSkill">
       <option value="">${t("choose")}</option>
       ${options.map(o => `<option value="${o}">${skillLabel(o)}</option>`).join("")}
@@ -352,14 +328,13 @@ function renderSubPicks(slot) {
 }
 
 function getRequiredSkills() {
-  return CORE.getRequiredSkills(DATA, getHero(), state.targetSubclass);
+  return CORE.getRequiredSkills(DATA, getClassTemplate(), state.targetSubclass);
 }
 
 function renderSubclasses() {
-  const hero = getHero();
   const list = document.getElementById("subclassList");
-  if (!hero) { list.innerHTML = ""; return; }
-  const subs = DATA.classes[hero.class]?.subclasses || {};
+  const classInfo = getClassTemplate();
+  const subs = classInfo?.subclasses || {};
   list.innerHTML = Object.entries(subs).map(([name, data]) => `
     <div class="subclass-item ${state.targetSubclass === name ? "selected" : ""}" data-sub="${name}">
       <div class="title">${subclassLabel(name)}</div>
@@ -368,7 +343,7 @@ function renderSubclasses() {
   `).join("");
   list.querySelectorAll(".subclass-item").forEach(el => {
     el.onclick = () => {
-      state.targetSubclass = el.dataset.sub;
+      state.targetSubclass = state.targetSubclass === el.dataset.sub ? null : el.dataset.sub;
       renderAll();
     };
   });
@@ -385,9 +360,9 @@ function renderRequirements() {
   const alerts = document.getElementById("buildAlerts");
   const req = getRequiredSkills();
   if (!req.length) {
-    reqList.innerHTML = "";
+    reqList.innerHTML = `<div class="hint">${t("selectSubclass")}</div>`;
     bar.style.width = "0%";
-    txt.textContent = t("selectSubclass");
+    txt.textContent = "";
     alerts.innerHTML = "";
     return;
   }
@@ -396,7 +371,7 @@ function renderRequirements() {
     const tier = skillLevel(skill);
     const cls = tier >= 3 ? "done" : tier > 0 ? "pending" : "missing";
     if (tier >= 3) done++;
-    const chance = getClassInfo()?.skillChances?.[skill];
+    const chance = getClassTemplate()?.skillChances?.[skill];
     const ch = chance !== undefined ? ` · ${chance}%${t("roll")}` : "";
     return `<div class="req ${cls}"><span>${skillLabel(skill)}</span><span>${tier >= 3 ? t("expertDone") : tier > 0 ? tierLabel(tier) : t("none")}${ch}</span></div>`;
   }).join("");
@@ -480,8 +455,7 @@ function renderSynergies() {
 }
 
 function computeBuildLevelCost() {
-  const hero = getHero();
-  const start = CORE.getStartingSkillTiers(DATA, hero);
+  const start = CORE.getConfiguratorStartingTiers(DATA, state.faction);
   const current = CORE.getCurrentSkillTiers(state.slots);
   return CORE.computeBuildLevelCost(start, current);
 }
@@ -519,14 +493,69 @@ function renderLevelCalculator() {
   }).join("");
 }
 
+function buildExportPayload() {
+  return {
+    version: 3,
+    lang,
+    faction: state.faction,
+    classType: state.classType,
+    targetSubclass: state.targetSubclass,
+    slots: state.slots
+  };
+}
+
+function applyImportPayload(data) {
+  if (data.lang) { lang = data.lang; document.getElementById("selLang").value = lang; applyStaticI18n(); }
+  if (data.faction) state.faction = data.faction;
+  if (data.classType) state.classType = data.classType;
+  state.targetSubclass = data.targetSubclass || null;
+  if (data.slots) state.slots = data.slots;
+  else resetBuild();
+  populateSelects();
+  renderAll();
+  syncUrl();
+}
+
+function encodeBuildToHash() {
+  try {
+    const raw = JSON.stringify(buildExportPayload());
+    return "#" + btoa(unescape(encodeURIComponent(raw)));
+  } catch (_) {
+    return "";
+  }
+}
+
+function decodeBuildFromHash(hash) {
+  if (!hash || hash.length < 2) return null;
+  try {
+    const raw = hash.startsWith("#") ? hash.slice(1) : hash;
+    return JSON.parse(decodeURIComponent(escape(atob(raw))));
+  } catch (_) {
+    return null;
+  }
+}
+
+function syncUrl() {
+  const hash = encodeBuildToHash();
+  if (hash && location.hash !== hash) {
+    history.replaceState(null, "", hash);
+  }
+}
+
+function loadFromUrl() {
+  const data = decodeBuildFromHash(location.hash);
+  if (data) applyImportPayload(data);
+}
+
 function renderAll() {
-  renderHeroCard();
+  renderConfigPanel();
   renderWheel();
   renderEditor();
   renderSubclasses();
   renderRequirements();
   renderSynergies();
   renderLevelCalculator();
+  syncUrl();
 }
 
 document.getElementById("selLang").onchange = (e) => {
@@ -537,24 +566,26 @@ document.getElementById("selLang").onchange = (e) => {
   renderAll();
 };
 
-document.getElementById("btnReset").onclick = () => initHeroFromSelection();
+document.getElementById("btnReset").onclick = () => initFromConfig();
 
 document.getElementById("btnExport").onclick = () => {
-  const hero = getHero();
-  const payload = {
-    version: 2,
-    lang,
-    hero: hero?.name,
-    heroId: state.heroId,
-    faction: state.faction,
-    targetSubclass: state.targetSubclass,
-    slots: state.slots
-  };
+  const payload = buildExportPayload();
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `homm-oe-build-${hero?.id || "custom"}.json`;
+  a.download = `homm-oe-build-${state.faction}-${state.classType}.json`;
   a.click();
+};
+
+document.getElementById("btnShare").onclick = async () => {
+  syncUrl();
+  const url = location.href.split("#")[0] + encodeBuildToHash();
+  try {
+    await navigator.clipboard.writeText(url);
+    alert(t("shareCopied"));
+  } catch (_) {
+    prompt(t("sharePrompt"), url);
+  }
 };
 
 document.getElementById("btnImport").onclick = () => document.getElementById("fileImport").click();
@@ -564,22 +595,19 @@ document.getElementById("fileImport").onchange = (e) => {
   const reader = new FileReader();
   reader.onload = () => {
     try {
-      const data = JSON.parse(reader.result);
-      if (data.lang) { lang = data.lang; document.getElementById("selLang").value = lang; applyStaticI18n(); }
-      if (data.heroId) state.heroId = data.heroId;
-      if (data.faction) state.faction = data.faction;
-      if (data.targetSubclass) state.targetSubclass = data.targetSubclass;
-      if (data.slots) state.slots = data.slots;
-      populateSelects();
-      renderAll();
+      applyImportPayload(JSON.parse(reader.result));
     } catch (err) { alert(t("importError") + err.message); }
   };
   reader.readAsText(file);
+  e.target.value = "";
 };
+
+window.addEventListener("hashchange", () => {
+  const data = decodeBuildFromHash(location.hash);
+  if (data) applyImportPayload(data);
+});
 
 applyStaticI18n();
 populateSelects();
-if (DATA.heroes?.length) {
-  state.heroId = DATA.heroes[0].id;
-  initHeroFromSelection();
-}
+loadFromUrl();
+if (!location.hash) renderAll();

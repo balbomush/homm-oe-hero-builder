@@ -20,6 +20,31 @@
     return data.factions[faction].skill;
   }
 
+  function findClassTemplate(data, faction, classType) {
+    if (!faction || !classType) return null;
+    return Object.values(data.classes).find(
+      c => c.faction === faction && c.type === classType
+    ) || null;
+  }
+
+  function buildConfiguratorSlots(data, faction) {
+    const slots = Array(SLOT_COUNT).fill(null);
+    const fSkill = factionSkillName(data, faction);
+    slots[0] = {
+      skill: fSkill,
+      tier: 1,
+      advSub: null,
+      expSub: null,
+      locked: true
+    };
+    return slots;
+  }
+
+  function getConfiguratorStartingTiers(data, faction) {
+    const fSkill = factionSkillName(data, faction);
+    return { [fSkill]: 1 };
+  }
+
   function isSkillAllowed(data, classInfo, skillName) {
     if (!classInfo) return true;
     const sk = data.skills[skillName];
@@ -69,9 +94,9 @@
     return slots.filter(Boolean).length;
   }
 
-  function getRequiredSkills(data, hero, targetSubclass) {
-    if (!targetSubclass || !hero) return [];
-    const subs = data.classes[hero.class]?.subclasses?.[targetSubclass];
+  function getRequiredSkills(data, classTemplate, targetSubclass) {
+    if (!targetSubclass || !classTemplate) return [];
+    const subs = classTemplate.subclasses?.[targetSubclass];
     return subs ? subs.skills.map(s => normSkill(data, s)) : [];
   }
 
@@ -80,8 +105,8 @@
     return s ? s.tier : 0;
   }
 
-  function subclassProgress(data, hero, slots, targetSubclass) {
-    const required = getRequiredSkills(data, hero, targetSubclass);
+  function subclassProgress(data, classTemplate, slots, targetSubclass) {
+    const required = getRequiredSkills(data, classTemplate, targetSubclass);
     if (!required.length) {
       return { required, done: 0, total: 0, complete: false };
     }
@@ -195,16 +220,18 @@
   }
 
   function validateBuild(ctx) {
-    const { data, hero, slots, targetSubclass } = ctx;
+    const { data, faction, classType, slots, targetSubclass } = ctx;
     const errors = [];
     const warnings = [];
 
-    if (!hero) {
-      errors.push("no_hero");
+    if (!faction || !classType) {
+      errors.push("no_config");
       return { ok: false, errors, warnings };
     }
 
-    const classInfo = data.classes[hero.class];
+    const classInfo = findClassTemplate(data, faction, classType);
+    if (!classInfo) errors.push("unknown_class_template");
+
     const filled = slots.filter(Boolean);
 
     if (filled.length > SLOT_COUNT) errors.push("too_many_slots");
@@ -212,32 +239,25 @@
     const skillNames = filled.map(s => s.skill);
     if (new Set(skillNames).size !== skillNames.length) errors.push("duplicate_skills");
 
-    const fSkill = factionSkillName(data, hero.faction);
+    const fSkill = factionSkillName(data, faction);
     if (!slots[0] || slots[0].skill !== fSkill) warnings.push("faction_skill_not_in_center");
 
     for (const slot of filled) {
-      if (!isSkillAllowed(data, classInfo, slot.skill)) {
+      if (classInfo && !isSkillAllowed(data, classInfo, slot.skill)) {
         errors.push("skill_not_allowed:" + slot.skill);
       }
       if (slot.tier >= 2 && !slot.advSub) warnings.push("missing_adv_sub:" + slot.skill);
       if (slot.tier >= 3 && !slot.expSub) warnings.push("missing_exp_sub:" + slot.skill);
     }
 
-    const lockedStart = buildInitialSlots(data, hero).filter(Boolean);
-    for (const start of lockedStart) {
-      const cur = slots.find(s => s && s.skill === start.skill);
-      if (!cur) errors.push("missing_starting_skill:" + start.skill);
-      else if (cur.tier < start.tier) errors.push("downgraded_starting_skill:" + start.skill);
-    }
-
-    if (targetSubclass) {
-      const prog = subclassProgress(data, hero, slots, targetSubclass);
+    if (targetSubclass && classInfo) {
+      const prog = subclassProgress(data, classInfo, slots, targetSubclass);
       if (!prog.complete && filled.length >= SLOT_COUNT) {
         warnings.push("slots_full_subclass_incomplete");
       }
     }
 
-    const startTiers = getStartingSkillTiers(data, hero);
+    const startTiers = getConfiguratorStartingTiers(data, faction);
     const currentTiers = getCurrentSkillTiers(slots);
     const levelCost = computeBuildLevelCost(startTiers, currentTiers);
     if (!levelCost.slotsOk) errors.push("build_too_many_skills");
@@ -248,20 +268,20 @@
       errors,
       warnings,
       levelCost,
-      subclass: targetSubclass
-        ? subclassProgress(data, hero, slots, targetSubclass)
+      subclass: targetSubclass && classInfo
+        ? subclassProgress(data, classInfo, slots, targetSubclass)
         : null
     };
   }
 
   /** Fill empty slots with allowed skills (for smoke tests). */
-  function assembleMaxBuild(data, hero, options = {}) {
-    const slots = buildInitialSlots(data, hero);
-    const classInfo = data.classes[hero.class];
+  function assembleMaxBuild(data, faction, classType, options = {}) {
+    const slots = buildConfiguratorSlots(data, faction);
+    const classInfo = findClassTemplate(data, faction, classType);
     const used = new Set(slots.filter(Boolean).map(s => s.skill));
-    const targetSubclass = options.targetSubclass ?? hero.subclassHint ?? null;
-    const required = targetSubclass
-      ? getRequiredSkills(data, hero, targetSubclass)
+    const targetSubclass = options.targetSubclass ?? null;
+    const required = targetSubclass && classInfo
+      ? getRequiredSkills(data, classInfo, targetSubclass)
       : [];
 
     const pickTier = skill => (required.includes(skill) ? 3 : 1);
@@ -306,6 +326,9 @@
     MAX_PRACTICAL_LEVEL,
     normSkill,
     factionSkillName,
+    findClassTemplate,
+    buildConfiguratorSlots,
+    getConfiguratorStartingTiers,
     isSkillAllowed,
     buildInitialSlots,
     usedSlotCount,
